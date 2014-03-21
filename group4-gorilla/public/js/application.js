@@ -31,6 +31,29 @@ $(document).ready(function() {
       alert("You're an idiot! You didn't complete the sign up form!");
     }
   });
+
+  $('.add-option').on('click', function(event) {
+    event.preventDefault();
+    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+
+    var holder = $('.option-field.template').clone();
+    holder.removeClass('template')
+    holder.addClass("removable")
+    holder.insertAfter("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form")
+  });
+
+  $('.remove-option').on('click', function(event) {
+    event.preventDefault();
+    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+    $(".removable:last").remove();
+    console.log("hello");
+    // holder.
+    // holder.insertAfter("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form")
+  });
+
+
 });
+
+
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()

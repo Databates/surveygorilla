@@ -1,0 +1,22 @@
+
+  <form id="submit-option-form" action='/survey/create/question/option' method="POST">
+    <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
+    <label>Choice: </label>
+    <div id="my-fucking-answer-choices">
+      <input class="option-field template" type="text" name="option[text]"><br>
+
+    </div>
+
+    <div id="additional-options">
+      <!-- erb open if @add  erb close -->
+         <!-- erb equal tab   erb :_add_option erb ending tag"  -->
+      <!-- erb open end  erb close -->
+    </div>
+    <input type="submit" value="Add Another Choice">
+    <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
+  </form>
+
+
+  <form id="finish-survey-form" action='/survey/create/confirm' method="POST">
+    <input type="submit" value="Finish Survey">
+  </form>

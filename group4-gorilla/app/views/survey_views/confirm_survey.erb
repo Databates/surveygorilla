@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Your unique link is <a href="/survey/<%=session[:current_survey]%>">/survey/<%=session[:current_survey]%></a></h2>
+
+
+  <form action='/survey/create/confirm' method="POST">
+    <input type="submit" value="confirm survey details">
+  </form>
+</div>

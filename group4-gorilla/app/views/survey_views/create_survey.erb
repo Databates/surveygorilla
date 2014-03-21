@@ -1,3 +1,15 @@
 <h1>Put Create Survey Logic Here</h1>
 
 <p>located in app/views/survey_views/create_survey.erb </p>
+
+<div class="container">
+  <form action='/survey' method="POST">
+    <label>Survey Title:</label><input type="text" name="survey[title]"><br>
+    <label>Survey Description:</label><input type="text" name="survey[description]"><br>
+
+
+    <input type="hidden" name="survey[user_id]" value="<%=session[:user_id]%>">
+
+    <input type="submit" value="submit">
+  </form>
+</div>

@@ -29,5 +29,17 @@ response = Response.create(question: q2, user: c, answer_choice: answer3)
 
 taken_survey = UserSurvey.create(user:c,survey:survey)
 
+# User table test
+puts a.email == "ian@yaoho.com" # true
 
+# User/Survey Associations test
+a.surveys.count == 1
 
+# Survey/Question Associations test
+survey.questions.count == 2
+
+# Question/AnswerChoice Associations test
+q1.answer_choices.count == 2
+
+# AnswerChoice/Response
+answer1.responses.count == 1

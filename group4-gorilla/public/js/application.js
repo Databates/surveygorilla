@@ -46,9 +46,7 @@ $(document).ready(function() {
     event.preventDefault();
     // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
     $(".removable:last").remove();
-    console.log("hello");
-    // holder.
-    // holder.insertAfter("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form")
+    // console.log("hello");
   });
 
 

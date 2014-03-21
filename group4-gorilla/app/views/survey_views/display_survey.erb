@@ -2,11 +2,24 @@
 
 <p>located in app/views/survey_views/display_survey.erb </p>
 
+<h1> SURVEYS </h1>
+
+<ul id="surveys-display">
+
+<%@surveys.each do |survey| %>
+
+<li>
+<h2><%=survey.title%></h2><br>
+<h3><%=survey.user.name%></h3><br>
+<p><%=survey.description%></p>
+</li>
+
+<%end%>d
+</ul>
 <!-- Surveys have many questions -->
 
 <!-- Question has one survey has name/title, description and user_id-->
-<!-- question likely have survey_id and text -->
-
+<!-- question likely have survey_id and text --
 
 
 

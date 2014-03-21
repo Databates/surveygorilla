@@ -4,9 +4,7 @@ get '/user/signup' do
 end
 
 get '/user/signin' do
-# get '/' do
   erb :"user_views/signin"
-
 end
 
 get '/user/signout' do

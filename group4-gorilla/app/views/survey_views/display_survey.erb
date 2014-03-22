@@ -1,8 +1,10 @@
 <div class="container">
 
-<h1>Display All Surveys</h1>
+  <h1> SURVEYS </h1><br>
 
-<p>located in app/views/survey_views/display_survey.erb </p>
+  <ul id="surveys-display">
+  <%@surveys.each do |survey| %>
+
 
   <%if @surveys%>
     <ul>
@@ -12,6 +14,7 @@
     </ul>
   <%end%>
 </div>
+
 
 
 

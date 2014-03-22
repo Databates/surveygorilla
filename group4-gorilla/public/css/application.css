@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -8,8 +13,41 @@ th {
 }
 
 #surveys-display {
-  list-style: none;
-  left-margin:
+  list-style:none;
+}
+
+#surveys-display {
+  padding:0;
+  margin:0;
+}
+
+#surveys-display .title, #surveys-display .author {
+  float:left;
+}
+
+.xxx {
+  float: left;
+  height: inherit;
+}
+
+#surveys-display p {
+  margin-bottom: 0;
+}
+
+#surveys-display .author {
+  clear: left;
+}
+
+#surveys-display .description{
+  float:right;
+  padding-left: 8px;
+  border-left: 2px dotted darkgreen;
+  width: 70%;
+  text-align: right;
+}
+
+li {
+  text-align: left;
 }
 
 .option-field.template {

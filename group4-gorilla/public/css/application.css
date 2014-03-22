@@ -3,6 +3,12 @@
   margin: 0;
 }
 
+body {
+  /*background-image: url('../img/1155959-gorillaz.jpg');*/
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -56,4 +62,13 @@ li {
 
 .question-text {
   font-size: 1.5em;
+}
+
+/* orange higlight for add button */
+.top-bar-section .right li a.add {
+  background-color: #B22400;
+}
+
+.top-bar-section .right li a.add:hover {
+  background-color: #BA3A19;
 }

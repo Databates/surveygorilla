@@ -64,21 +64,20 @@ th {
   margin:0;
 }
 
-#surveys-display .title, #surveys-display .author {
-  float:left;
+#surveys-display {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #eee;
+  font-size: 2em;
+
 }
 
-.xxx {
-  float: left;
-  height: inherit;
-}
-
-#surveys-display p {
-  margin-bottom: 0;
-}
-
-#surveys-display .author {
-  clear: left;
+.author {
+  padding:2px;
+  font-size: .75em;
+  margin-left: 5px;
+  border-radius: 2px;
+  background-color: lightblue;
 }
 
 #surveys-display .description {
@@ -109,3 +108,12 @@ li {
 .top-bar-section .right li a.add:hover {
   background-color: #BA3A19;
 }
+
+#survey-confirmation-button {
+  color: white;
+  background-color: lightblue;
+}
+
+
+
+

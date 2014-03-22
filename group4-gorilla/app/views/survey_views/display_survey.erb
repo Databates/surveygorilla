@@ -1,20 +1,15 @@
 <div class="container">
 
-  <h1> SURVEYS </h1><br>
-
-  <ul id="surveys-display">
+  <h1> SURVEYS </h1>
   <%@surveys.each do |survey| %>
-
-
-  <%if @surveys%>
-    <ul>
-    <% @surveys.each do |survey|%>
-       <li><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a></li>
-    <%end%>
-    </ul>
+  <div id="surveys-display">
+      <p class=""><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a><span class="author"> by <%=survey.user.name%></span>
+      <span>| <a href="/survey/<%=survey.id%>"> Take this survey</a></span>
+      </p>
+  </div>
   <%end%>
-</div>
 
+   <!-- div container end -->
 
 
 

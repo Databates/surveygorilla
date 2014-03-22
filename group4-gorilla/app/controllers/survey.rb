@@ -18,16 +18,11 @@ post '/survey' do
 
   @survey = Survey.find(params[:survey_id])
 
+# variable survey
+# {"title"=>"whatever", "description"=>"fuck off", "user_id"=>"6"}
 
   erb :"survey_views/create_question" #take them to create a question
 end
-
-# get '/survey/create' do
-#   redirect to "/" if !current_user?
-#   # @survey = Survey.create(user_id: session[:user_id], title: "Title",is_public: params[:is_public], category: params[:category])
-#   redirect to("/survey/edit/#{@survey.id}")
-# end
-
 
 
 
@@ -58,12 +53,61 @@ post '/survey/create/question' do
   erb :"survey_views/create_option"
 end
 
-# INSERT INTO "questions" ("created_at", "survey_id", "text", "updated_at")
-# VALUES ($1, $2, $3, $4) RETURNING "id"
-# [["created_at", 2014-03-21 23:41:52 UTC],
-# ["survey_id", 3],
-# ["text", "Fuck the world"],
-# ["updated_at", 2014-03-21 23:41:52 UTC]]
+# LOG {"question"=>{"text"=>"What is your fav burrito?"}}
+
+
+#--------- To Create Answer Choices (Options) --------------------------------------
+
+get 'survey/create/answer_choices' do
+  # if session[:user_id] == nil
+  #   redirect '/'
+  # end
+
+  @question = Question.last
+
+  erb :"survey_views/create_option"
+
+end
+
+
+post '/survey/create/answer_choices' do
+
+# {"answer1"=>"burrito", "answer2"=>"pizza", "answer3"=>"taco "}
+
+  @question = Question.last
+  params.each_pair do |name, answer|
+    @question.answer_choices << AnswerChoice.new(text: answer)
+  end
+  puts "[LOG THIS SHIT] #{params.inspect}"
+  # redirect '/survey/create/confirm'
+  redirect '/surveys'
+  # erb :"survey_views/confirm_survey"
+end
+
+get '/surveys' do
+@surveys = Survey.all
+erb :"survey_views/display_survey"  #take them to display @ views/survey_views/display_survey.erb
+end
+
+# <li><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a></li>
+
+
+
+get '/survey/:survey_id/results' do
+
+  @survey = Survey.find_by_id(params[:survey_id])
+  @questions = @survey.questions # array
+  # @questions.each {}
+  # @answer_choices =
+  # @question
+  # if @survey == nil
+  #   @error = true
+  # end
+
+  erb :"survey_views/display_one"
+end
+
+
 
 
 
@@ -81,46 +125,28 @@ end
 
 
 
-
-
-
-post '/survey/create/confirm' do
-  # question = Question.last
-  # question.options << Option.new(text: params[:option_text])
-
-  redirect '/survey/create/confirm'
-end
-
-
-
-
-
-
-
 # ---------- Read
 
-get '/surveys' do
-@surveys = Survey.all
-erb :"survey_views/display_survey"  #take them to display @ views/survey_views/display_survey.erb
+
+
+
+
+  get '/survey/:survey_id' do
+    @survey = Survey.find(params[:survey_id])
+
+    # erb :take_survey
+  end
+
+
+# ---------- Update
+
+#
+get '/surveys/edit/:id' do
+# @surveys = Survey.find(params[:id])
+# erb :"survey_views/edit_survey"
 end
 
 get '/surveys/:id' do
-  #assuming migration places user_id foreign key on surveys (belongs to user)
-@surveys = Survey.find(params[:id])
-  if @survey.user_id == session[:user_id]
-    erb :"survey_views/display_survey"
-  else
-    redirect to "/"  #COME BACK TO
-  end
-end
-# ---------- Update
-
-get '/surveys/edit/:id' do
-@surveys = Survey.find(params[:id])
-erb :"survey_views/edit_survey"
-end
-
-put '/surveys/:id' do
   @survey = Survey.find(params[:id])
   @survey.update(params)
 erb :"survey_views/display_survey"

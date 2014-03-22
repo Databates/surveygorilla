@@ -1,5 +1,5 @@
 get '/' do
-  session.clear
+  # session.clear
   erb :index
 end
 

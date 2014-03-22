@@ -1,13 +1,11 @@
 
-  <form id="submit-option-form" action='/survey/create/question/option' method="POST">
+<h1> Question: <%= @question.text %></h1>
+
+  <form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
     <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
     <label>Please Add Options to your Survey</label>
-    <div id="sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form">
-
-      <input class="option-field template" type="text" name="option[text]">
-
-      <input class="option-field" type="text" name="option[text]">
-
+    <div id="inputs">
+      <input class='option-field' type='text' name='answer1'>
     </div>
 
  <!--    <div id="additional-options"> -->
@@ -18,16 +16,19 @@
 
     <button class="add-option" type="button">Add another Option</button>
     <!-- <input class="add-option" type="submit" value="Add Another Option"> -->
-    <button class="remove-last-option" type="button"> Delete some shit mother fucker</button>
+    <button class="remove-last-option" type="button">Remove your last Option</button>
     <!-- <input class="remove-last-option"type="submit" value="Remove Your Last Option"> -->
     <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
     <!-- <input type="submit" value="Finish Survey"> -->
-    <button type="button"> Finish Survey</button>
+
+    <br><br>
+    <button type="submit"> Finish Survey</button>
+    <input type="submit" value="Finish Survey and put your data in the database" />
   </form>
 
 
-<!--   <form id="finish-survey-form" action='/survey/create/confirm' method="POST"> -->
+<!-- INSERT INTO "answer_choices" ("created_at", "question_id", "updated_at") VALUES ($1, $2, $3)
+RETURNING "id"  [["created_at", 2014-03-22 13:57:32 UTC], ["question_id", 54], ["updated_at", 2014-03-22 13:57:32 UTC]] -->
 
-<!--   </form> -->
 
-
+<!-- <input type="hidden" name="survey[user_id]" value="erb=session[:user_id]erb"> -->

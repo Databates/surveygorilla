@@ -4,20 +4,14 @@
 
 <p>located in app/views/survey_views/display_survey.erb </p>
 
-<h1> SURVEYS </h1>
-
-
-<% @surveys.each do |survey| %>
-
-<li><a href="surveys/<%= survey.id %>"><%= survey.name %></a></li>
-
-<% end %>
-
-</ul>
-<!-- Surveys have many questions -->
-
-<!-- Question has one survey has name/title, description and user_id-->
-<!-- question likely have survey_id and text -->
-
-
+  <%if @surveys%>
+    <ul>
+    <% @surveys.each do |survey|%>
+       <li><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a></li>
+    <%end%>
+    </ul>
+  <%end%>
 </div>
+
+
+

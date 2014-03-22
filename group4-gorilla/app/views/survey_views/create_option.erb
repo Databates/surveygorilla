@@ -1,22 +1,33 @@
 
   <form id="submit-option-form" action='/survey/create/question/option' method="POST">
     <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
-    <label>Choice: </label>
-    <div id="my-fucking-answer-choices">
-      <input class="option-field template" type="text" name="option[text]"><br>
+    <label>Please Add Options to your Survey</label>
+    <div id="sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form">
+
+      <input class="option-field template" type="text" name="option[text]">
+
+      <input class="option-field" type="text" name="option[text]">
 
     </div>
 
-    <div id="additional-options">
+ <!--    <div id="additional-options"> -->
       <!-- erb open if @add  erb close -->
          <!-- erb equal tab   erb :_add_option erb ending tag"  -->
       <!-- erb open end  erb close -->
-    </div>
-    <input type="submit" value="Add Another Choice">
+<!--     </div> -->
+
+    <button class="add-option" type="button">Add another Option</button>
+    <!-- <input class="add-option" type="submit" value="Add Another Option"> -->
+    <button class="remove-last-option" type="button"> Delete some shit mother fucker</button>
+    <!-- <input class="remove-last-option"type="submit" value="Remove Your Last Option"> -->
     <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
+    <!-- <input type="submit" value="Finish Survey"> -->
+    <button type="button"> Finish Survey</button>
   </form>
 
 
-  <form id="finish-survey-form" action='/survey/create/confirm' method="POST">
-    <input type="submit" value="Finish Survey">
-  </form>
+<!--   <form id="finish-survey-form" action='/survey/create/confirm' method="POST"> -->
+
+<!--   </form> -->
+
+

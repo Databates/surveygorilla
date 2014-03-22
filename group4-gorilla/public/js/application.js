@@ -1,6 +1,5 @@
-// sign-in and sign-up JS validations
-
 $(document).ready(function() {
+  console.log("shit")
   $('#sign-in').css('background-color', 'black');
   $('#sign-in input[name=password]').css('background-color', 'blue');
   $('#sign-in input[name=email]').css('background-color', 'red');
@@ -32,25 +31,58 @@ $(document).ready(function() {
     }
   });
 
+
   $('.add-option').on('click', function(event) {
     event.preventDefault();
-    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
 
     var holder = $('.option-field.template').clone();
-    holder.removeClass('template')
-    holder.addClass("removable")
-    holder.insertAfter("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form")
+    // console.log("holder");
+    holder.removeClass('template');
+    holder.addClass("removable");
+    console.log("fuck off");
+    holder.appendTo("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form");
+    console.log("god damn it");
   });
 
-  $('.remove-option').on('click', function(event) {
+  $('.remove-last-option').on('click', function(event) {
     event.preventDefault();
     // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
     $(".removable:last").remove();
     // console.log("hello");
   });
 
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   $('.add-option').on('click', function(event) {
+//     event.preventDefault();
+//     // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+
+//     var holder = $('.option-field.template').clone();
+//     holder.removeClass('template')
+//     holder.addClass("removable")
+//     holder.insertAfter("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form")
+//   });
+
+//   $('.remove-option').on('click', function(event) {
+//     event.preventDefault();
+//     // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+//     $(".removable:last").remove();
+//     // console.log("hello");
+//   });
+
+// });
 
 
 

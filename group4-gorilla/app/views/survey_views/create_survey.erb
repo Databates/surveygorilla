@@ -3,7 +3,7 @@
 <p>located in app/views/survey_views/create_survey.erb </p>
 
 <div class="container">
-  <form action='/survey' method="POST">
+  <form action='/survey/create' method="POST">
     <label>Survey Title:</label><input type="text" name="survey[title]"><br>
     <label>Survey Description:</label><input type="text" name="survey[description]"><br>
 
@@ -13,3 +13,11 @@
     <input type="submit" value="submit">
   </form>
 </div>
+
+
+<!--  create_table :surveys do |t|
+      t.string      :title
+      t.text        :description
+      t.belongs_to  :user
+      t.timestamps -->
+

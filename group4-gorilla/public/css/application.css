@@ -49,3 +49,7 @@ th {
 li {
   text-align: left;
 }
+
+.option-field.template {
+  display: none;
+}

@@ -1,11 +1,4 @@
 $(document).ready(function() {
-  // console.log("shit")
-  $('#sign-in').css('background-color', 'black');
-  $('#sign-in input[name=password]').css('background-color', 'blue');
-  $('#sign-in input[name=email]').css('background-color', 'red');
-
-
-
   $('#sign-in').on("submit", function(event) {
     var sign_in_password = $('#sign-in input[name=password]').val();
     var sign_in_email = $('#sign-in input[name=email]').val();
@@ -15,10 +8,6 @@ $(document).ready(function() {
       alert("You're an idiot! You didn't complete the sign in form!");
     }
   });
-
-  $('#sign-up input[name="user[password_confirmation]"]').css('background-color', 'green');
-
-
 
   $('#sign-up').on("submit", function(event) {
     var sign_up_email = $('#sign-up input[name="user[email]"]').val();

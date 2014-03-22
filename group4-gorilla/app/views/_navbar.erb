@@ -10,13 +10,13 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <% if current_user? %>
+        <li><a class="add" href="/survey/new">Add a survey</a></li>
+        <li><a href="/user/signout">Sign Out</a></li>
         <li class="has-dropdown">
           <a href="#"><%= current_user.email %></a>
           <ul class="dropdown">
             <li><a href="/user/<%= current_user.id %>">Profile Page</a></li>
             <li><a href="/user/edit/<%= current_user.id %>">Edit</a></li>
-            <li><a href="/user/signout">Sign Out</a></li>
-            <li><a href="http://reddit.com">Add link here</a></li>
           </ul>
         </li>
       <% else %>

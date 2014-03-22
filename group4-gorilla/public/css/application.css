@@ -53,3 +53,7 @@ li {
 .option-field.template {
   display: none;
 }
+
+.question-text {
+  font-size: 1.5em;
+}

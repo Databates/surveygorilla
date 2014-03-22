@@ -5,19 +5,16 @@
   <ul id="surveys-display">
   <%@surveys.each do |survey| %>
 
-  <li class="survey-item">
-    <div class="xxx">
-      <p class="title"><%=survey.title%></p>
-      <p class="author">by <%=survey.user.name%></p>
-    </div>
-    <p class="description"><%=survey.description%></p>
-  </li>
 
+  <%if @surveys%>
+    <ul>
+    <% @surveys.each do |survey|%>
+       <li><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a></li>
+    <%end%>
+    </ul>
   <%end%>
-  </ul>
 </div>
 
-<li><a href="surveys/<%= survey.id %>"><%= survey.name %></a></li>
 
-<% end %>
+
 

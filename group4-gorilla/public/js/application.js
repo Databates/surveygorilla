@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  console.log("shit")
+  // console.log("shit")
   $('#sign-in').css('background-color', 'black');
   $('#sign-in input[name=password]').css('background-color', 'blue');
   $('#sign-in input[name=email]').css('background-color', 'red');
@@ -31,17 +31,13 @@ $(document).ready(function() {
     }
   });
 
-
   $('.add-option').on('click', function(event) {
     event.preventDefault();
-
-    var holder = $('.option-field.template').clone();
-    // console.log("holder");
+    var i = $("#inputs .option-field").length + 1;
+    var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
     holder.removeClass('template');
     holder.addClass("removable");
-    console.log("fuck off");
-    holder.appendTo("#sorry-marco-seriously-i-apologize-for-using-a-div-inside-a-form");
-    console.log("god damn it");
+    holder.appendTo("#inputs");
   });
 
   $('.remove-last-option').on('click', function(event) {

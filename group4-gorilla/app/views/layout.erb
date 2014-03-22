@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/css/foundation.min.css">
   <link rel="stylesheet" href="/css/application.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title></title>
 </head>
-<body>
-  <%= erb :_navbar %>
+<body> 
+  <%= erb :_navbar %> 
+  <%= erb :_errors %>
   <%= yield %>
 
+  <%= erb :_js %>
 </body>
 </html>

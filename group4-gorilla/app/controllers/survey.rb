@@ -50,7 +50,7 @@ post '/survey/create/question' do
   @survey.questions << Question.new(params[:question])
   @question = Question.last
   puts "LOG #{@question}"
-  erb :"survey_views/create_option"
+  # erb :"survey_views/create_option"
 end
 
 # LOG {"question"=>{"text"=>"What is your fav burrito?"}}

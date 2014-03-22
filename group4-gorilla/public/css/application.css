@@ -108,3 +108,12 @@ li {
 .top-bar-section .right li a.add:hover {
   background-color: #BA3A19;
 }
+
+#survey-confirmation-button {
+  color: white;
+  background-color: lightblue;
+}
+
+
+
+

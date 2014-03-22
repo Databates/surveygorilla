@@ -1,18 +1,42 @@
 
-<p class="question-text"><%= @survey.questions[0].text %></p>
- <% @survey.questions.each do |question| %>
-  <ol>
-    <% question.answer_choices.each do |choice| %>
-      <li><%= choice.text %></li>
+
+
+<form action="/survey/take" method="post">
+    <input type="hidden" value="<%= @survey.id %>" name="survey_id"/>
+  <% @survey.questions.each do |question| %>
+
+    <p><%= question.text %></p>
+    <% question.answer_choices.each do |option| %>
+      <input type="radio" name="answers[<%=question.id%>]" value="<%=option.id%>"><%= option.text %><br>
     <% end %>
-  </ol>
-<% end %>
+  <% end %>
+  <input type="submit" value="Complete Survey"/>
+  </form>
+</div>
+
+
+<!-- {"survey_id"=>"1", "option"=>{"1"=>"1", "2"=>"3"}} -->
+
+<!--
+create_table :responses do |t|
+      t.belongs_to :question
+      t.belongs_to :user
+      t.belongs_to :answer_choice
+ -->
 
 
 
 
 
-<form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
+
+
+
+
+
+
+
+
+<!-- <form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
 
 
     <div id="inputs">
@@ -25,6 +49,6 @@
 
     <input type="submit" value="Submit" />
 
-  </form>
+  </form> -->
 
->>>>>>> rebase freebase whatever
+

@@ -5,7 +5,7 @@ class CreateResponses < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :answer_choice
 ######################################## Added 3/22/14
-      t.belongs_to :survey
+      # t.belongs_to :survey
 
 ##############################################
       t.timestamps

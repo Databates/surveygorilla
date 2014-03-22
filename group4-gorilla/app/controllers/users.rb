@@ -53,7 +53,7 @@ post '/user/signin' do
     redirect to("/user/#{user.id}") #get '/user/:id' route
   else
     @errors = {:Invalid=>["Incorrect Login"]}
-    erb :"user_views/signin"
+    redirect to('/')
     # erb :index
   end
 end

@@ -5,9 +5,9 @@ get '/survey/new' do
 end
 
 get '/survey/create' do
-  if session[:user_id] == nil
-    redirect '/'
-  end
+  # if session[:user_id] == nil
+  #   redirect '/'
+  # end
   erb :"survey_views/create_survey"
 end
 
@@ -16,7 +16,8 @@ end
 
 post '/survey' do
 
-  # @survey = Survey.find(params[:survey_id])
+  @survey = Survey.find(params[:survey_id])
+
 
   erb :"survey_views/create_question" #take them to create a question
 end
@@ -32,37 +33,38 @@ end
 
 
 post '/survey/create' do
-  # survey = Survey.create(params[:survey])
-  # session[:current_survey] = survey.id
+
+  survey = Survey.create(params[:survey])
+  session[:current_survey] = survey.id  #create survey session and set it equal to the new survey id
   redirect '/survey/create/question'
 end
 
-# INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at")
-# VALUES ($1, $2, $3, $4, $5) RETURNING "id"
-# [["created_at", 2014-03-21 19:40:26 UTC],
-# ["email", "ian@yahoo.com"],
-# ["name", "ian"],
-# ["password_digest", "$2a$10$f4AUdFfUItmE8/f2qNKShOz9fCfEjtDlSOWFpCeecxKL2bGyvbm6C"],
-# ["updated_at", 2014-03-21 19:40:26 UTC]]
-
 
 get '/survey/create/question' do
-  # if session[:user_id] == nil
+  # if session[:user_id] == nil  #Add this in to make sure the user is in a current session later.
   #   redirect '/'
   # end
-  erb :"survey_views/create_option"
+  erb :"survey_views/create_question"
 end
 
 
 post '/survey/create/question' do
-
-  # @survey = Survey.find(session[:current_survey])
-  # # binding.pry
-  # @survey.questions << Question.new(params[:question])
-  # @question = Question.last
-  # @options = true
-  # erb :_create_option, layout: false
+  puts "LOG #{params.inspect}"
+  @survey = Survey.find(session[:current_survey])
+  puts "LOG #{@survey}"
+  @survey.questions << Question.new(params[:question])
+  @question = Question.last
+  puts "LOG #{@question}"
+  erb :"survey_views/create_option"
 end
+
+# INSERT INTO "questions" ("created_at", "survey_id", "text", "updated_at")
+# VALUES ($1, $2, $3, $4) RETURNING "id"
+# [["created_at", 2014-03-21 23:41:52 UTC],
+# ["survey_id", 3],
+# ["text", "Fuck the world"],
+# ["updated_at", 2014-03-21 23:41:52 UTC]]
+
 
 
 #----------After you click Finish Survey  survey/create/confirm -------------

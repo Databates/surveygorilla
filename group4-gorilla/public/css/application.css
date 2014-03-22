@@ -11,3 +11,7 @@ th {
   list-style: none;
   left-margin:
 }
+
+.option-field.template {
+  display: none;
+}

@@ -1,26 +1,23 @@
 <div class="container">
 
-<h1>Display All Surveys</h1>
+  <h1> SURVEYS </h1><br>
 
-<p>located in app/views/survey_views/display_survey.erb </p>
+  <ul id="surveys-display">
+  <%@surveys.each do |survey| %>
 
-<h1> SURVEYS </h1>
+  <li class="survey-item">
+    <div class="xxx">
+      <p class="title"><%=survey.title%></p>
+      <p class="author">by <%=survey.user.name%></p>
+    </div>
+    <p class="description"><%=survey.description%></p>
+  </li>
 
-
-<% @surveys.each do |survey| %>
+  <%end%>
+  </ul>
+</div>
 
 <li><a href="surveys/<%= survey.id %>"><%= survey.name %></a></li>
 
 <% end %>
 
-
-
-
-</ul>
-<!-- Surveys have many questions -->
-
-<!-- Question has one survey has name/title, description and user_id-->
-<!-- question likely have survey_id and text -->
-
-
-</div>

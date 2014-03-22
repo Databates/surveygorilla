@@ -1,16 +1,19 @@
 <div class="container">
-  <h1>Group 4 Survey Gorilla</h1>
+  <h1>Welcome to SurveyGorillaz</h1>
+</div>
+
+<div class="avail-surveys">
+  <% @surveys.each do |survey| %>
+    <div class="link"><%= survey.title %></div>
+  <% end %>
 </div>
 
 <div class="container">
   <%= erb :"user_views/_signin_form" %>
 </div>
 
-
 <div class="container">
-
-<%= erb :"user_views/_signup_form" %>
-
+  <%= erb :"user_views/_signup_form" %>
 </div>
 
 

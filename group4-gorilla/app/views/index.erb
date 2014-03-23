@@ -1,20 +1,8 @@
-<div class="container">
-  <h1>Welcome to SurveyGorillaz</h1>
+<div class="container home">
+  <h1>"Surveyz forever, surveyz free, surveyz forever you and me"</h1>
+  <button type"button">sign in</button>
 </div>
 
-<div class="avail-surveys">
-  <% @surveys.each do |survey| %>
-    <div class="link"><%= survey.title %></div>
-  <% end %>
-</div>
-
-<div class="container">
-  <%= erb :"user_views/_signin_form" %>
-</div>
-
-<div class="container">
-  <%= erb :"user_views/_signup_form" %>
-</div>
 
 
 

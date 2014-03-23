@@ -19,12 +19,8 @@ get '/user/delete' do
   redirect to('/')
 end
 
+#------ SIGN UP: New User ---------------------------------------
 
-
-
-
-
-#-------SIGN UP: New User-----------------------------------------
 post '/user/new' do
   user = User.new(params[:user])
   if user.save
@@ -36,16 +32,18 @@ post '/user/new' do
   end
 end
 
-#-----user/id get route - - - - - - - - - - - - - - -
+#---- user/id get route -----------------------------------------
+
 get '/user/:id' do
   @user = User.find(session[:user_id])
+  @user_surveys = Survey.all.where(user_id: session[:user_id])
   redirect to("/") if @user.id != params[:id].to_i
   erb :"user_views/show"
 end
 
-#-------SIGN IN --> GO TO show.erb ----------------------------------------------
+#------ SIGN IN --> GO TO show.erb ------------------------------
+
 post '/user/signin' do
-# post '/' do
   user = User.find_by_email(params[:email])
 
   if user && user.authenticate(params[:password])
@@ -54,18 +52,18 @@ post '/user/signin' do
   else
     @errors = {:Invalid=>["Incorrect Login"]}
     redirect to('/')
-    # erb :index
   end
 end
 
-#---- GET Route to edit your account -----------------------
+#----- GET Route to edit your account ---------------------------
 
 get '/user/edit/:id' do
   redirect to("/") if current_user.id != params[:id].to_i
   erb :"user_views/edit"
 end
 
-#----- EDIT YOUR ACCOUNT  POST ROUTE (controllers/)
+#----- EDIT YOUR ACCOUNT POST ROUTE (controllers/) -------------
+
 post '/user/edit' do
   @user = User.find(session[:user_id])
 

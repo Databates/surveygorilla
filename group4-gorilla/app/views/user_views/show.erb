@@ -1,21 +1,13 @@
 <div class="container">
-  <h1>Put Surveys Here</h1>
-  <p>Located in: views/user_views/show.erb</p>
-
-
-  <!-- <a href="/user_views/edit">Edit your Account</a> -->
-
-  <!-- Links for future reference:  -->
-
-    <a href="/user/edit/<%= current_user.id %>">Edit Your Profile</a>
-    <a href="/user/signout">Sign Out</a>
-    <a href="/surveys">Choose a Survey to Complete</a>
-
-  <br>
-  COMING SOON - <br><br>
-  <!-- <a href="/survey/<%= current_user.id %>">Create a Survey!</a> -->
-
-  <a href="/survey/new">Create a Survey!</a>
+  <h1><%= current_user.name %>'s Page</h1>
+  <ul>
+    <li><a href="/user_views/edit">Edit your Account</a></li>
+    <li><a href="/user/edit/<%= current_user.id %>">Edit Your Profile</a></li>
+    <li><a href="/user/signout">Sign Out</a></li>
+    <li><a href="/surveys">Choose a Survey to Complete</a></li>
+    <li><a href="/survey/<%= current_user.id %>">Create a Survey!</a></li>
+    <li><a href="/survey/new">Create a Survey!</a></li>
+  </ul>
 </div>
 
 

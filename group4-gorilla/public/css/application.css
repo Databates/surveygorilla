@@ -3,6 +3,49 @@
   margin: 0;
 }
 
+body {
+  width: 600px;
+  margin: 90px auto 0;
+  background-image: url('../img/surveygorillazLogo.png');
+  background-repeat: no-repeat;
+  background-position: 0 45px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 10px #333;
+}
+
+.logo {
+  font-size: 3em;
+  line-height: 50px;
+}
+
+.logo span {
+  position: relative;
+  top: -20px;
+  right: -5px;
+}
+
+.avail-surveys {
+  position: fixed;
+  left: 20px;
+  top: 200px;
+}
+
+.avail-surveys .link {
+  background-color: #eee;
+  font-weight: 700px;
+  font-size: 1.25em;
+  margin: 6px;
+  padding: 10px;
+  color: #B22400;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -38,7 +81,7 @@ th {
   clear: left;
 }
 
-#surveys-display .description{
+#surveys-display .description {
   float:right;
   padding-left: 8px;
   border-left: 2px dotted darkgreen;
@@ -56,4 +99,13 @@ li {
 
 .question-text {
   font-size: 1.5em;
+}
+
+/* orange higlight for add button */
+.top-bar-section .right li a.add {
+  background-color: #B22400;
+}
+
+.top-bar-section .right li a.add:hover {
+  background-color: #BA3A19;
 }

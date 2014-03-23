@@ -43,7 +43,6 @@ body {
   color: #222222;
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -999,7 +998,6 @@ meta.foundation-mq-topbar {
   overflow: hidden;
   height: 45px;
   line-height: 45px;
-  position: relative;
   background: #333333;
   margin-bottom: 0; }
   .top-bar ul {
@@ -1027,10 +1025,7 @@ meta.foundation-mq-topbar {
     height: 45px;
     margin: 0;
     font-size: 16px; }
-    .top-bar .name h1 {
-      line-height: 45px;
-      font-size: 1.0625rem;
-      margin: 0; }
+
       .top-bar .name h1 a {
         font-weight: normal;
         color: white;
@@ -2656,7 +2651,6 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #222222;

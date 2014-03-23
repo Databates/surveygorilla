@@ -1,8 +1,34 @@
+ 
 
-#--- CREATE -------
-get '/survey/new' do
-  erb :"survey_views/create_survey"
+#---- Landing Page After Login/Signup:  Show ALL User Surveys ----------------
+
+get '/surveys' do
+@surveys = Survey.all
+erb :"survey_views/display_survey"  #take them to display @ views/survey_views/display_survey.erb
 end
+
+
+# Do we still need this? -  Is anyone using this? I'm not. Just checking
+# post '/survey' do
+
+#   @survey = Survey.find(params[:survey_id])
+
+#   erb :"survey_views/create_question"
+# end
+
+#------------------------------------------------------------------
+
+
+
+
+
+#--- Create a Survey Routes ------------------------------------------
+
+#Unless someone wants the GET survey/new route, let's delete it: 
+
+# get '/survey/new' do
+#   erb :"survey_views/create_survey"
+# end
 
 get '/survey/create' do
   # if session[:user_id] == nil
@@ -12,16 +38,6 @@ get '/survey/create' do
 end
 
 
-post '/survey' do
-
-  @survey = Survey.find(params[:survey_id])
-
-  erb :"survey_views/create_question"
-end
-
-
-
-
 post '/survey/create' do
 
   survey = Survey.create(params[:survey])
@@ -29,6 +45,11 @@ post '/survey/create' do
   redirect '/survey/create/question'
 end
 
+#----------------------------------
+
+
+
+#------ Create a Question Route   -------------------
 
 get '/survey/create/question' do
   # if session[:user_id] == nil  #Add this in to make sure the user is in a current session later.
@@ -39,52 +60,46 @@ end
 
 
 post '/survey/create/question' do
-  puts "LOG #{params.inspect}"
+  # puts "LOG #{params.inspect}"
   @survey = Survey.find(session[:current_survey])
-  puts "LOG #{@survey}"
+  # puts "LOG #{@survey}"
   @survey.questions << Question.new(params[:question])
   @question = Question.last
-  puts "LOG #{@question}"
+  # puts "LOG #{@question}"
   erb :"survey_views/create_option" #turned back on for testing. 11am Sunday 3/23/14s
+  # redirect '/survey/create/option'
 end
 
 # LOG {"question"=>{"text"=>"What is your fav burrito?"}}
 
 
-#--------- To Create Answer Choices (Options) --------------------------------------
+
+
+#--------- Create AnswerChoices (Options) Routes --------------------------------------
 
 get 'survey/create/answer_choices' do
   # if session[:user_id] == nil
   #   redirect '/'
   # end
-
   @question = Question.last
-
   erb :"survey_views/create_option"
-
 end
 
 
 post '/survey/create/answer_choices' do
-
-# {"answer1"=>"burrito", "answer2"=>"pizza", "answer3"=>"taco "}
-
   @question = Question.last
   params.each_pair do |name, answer|
     @question.answer_choices << AnswerChoice.new(text: answer)
   end
   puts "[LOG THIS SHIT] #{params.inspect}"
-  # redirect '/survey/create/confirm'
-  redirect '/surveys'
-  # erb :"survey_views/confirm_survey"
+  redirect '/surveys' #send them back to the landing page with ALL surveys
 end
 
-get '/surveys' do
-@surveys = Survey.all
-erb :"survey_views/display_survey"  #take them to display @ views/survey_views/display_survey.erb
-end
+# Our jquery truck brings in answers like this: 
+# {"answer1"=>"burrito", "answer2"=>"pizza", "answer3"=>"taco "}
 
-# <li><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a></li>
+
+
 
 
 
@@ -105,55 +120,14 @@ end
 
 
 
+#----------- Take a Survey Route ----------------------------------------
 
-
-#----------After you click Finish Survey  survey/create/confirm -------------
-
-get '/survey/create/confirm' do
-  if session[:user_id] == nil
-    redirect '/'
-  end
-
-  erb :"survey_views/confirm_survey"
+#when you click "Take Survey" it uses this route:
+get '/survey/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  # @questions = @survey.questions # array
+  erb :"survey_views/take_survey"
 end
-
-
-#----------- View your Results ----------------
-
-get '/survey/:survey_id/results' do
-  @survey = Survey.find_by_id(params[:survey_id])
-  if @survey == nil
-    @error = true
-  end
-
-  erb :"survey_views/results"
-end
-
-
-#------------ View Your Surveys
-
-get '/view_your_surveys' do
-  # if session[:user_id] == nil
-  #   redirect '/'
-  # end
-
-  @surveys = User.find(session[:user_id]).surveys
-  erb :"survey_views/list_user_surveys"
-end
-
-
-
-# ---------- Read
-
-
-
-
-
-  get '/survey/:survey_id' do
-    @survey = Survey.find(params[:survey_id])
-    # @questions = @survey.questions # array
-    erb :"survey_views/take_survey"
-  end
 
 
 post '/survey/take' do
@@ -173,28 +147,62 @@ post '/survey/take' do
 
 end
 
+
+#redirect user to confirmation page after taking survey: 
 get '/confirmation' do
   erb :"survey_views/completed_survey"
 end
 
 
-# ---------- Update
+#----------- View the Results of your Surveys ----------------
 
-#
-get '/surveys/edit/:id' do
-# @surveys = Survey.find(params[:id])
-# erb :"survey_views/edit_survey"
+get '/survey/:survey_id/results' do
+  @survey = Survey.find_by_id(params[:survey_id])
+  if @survey == nil
+    @error = true
+  end
+
+  erb :"survey_views/results"
 end
 
-get '/surveys/:id' do
-  @survey = Survey.find(params[:id])
-  @survey.update(params)
-erb :"survey_views/display_survey"
+
+#------------ View a list of YOUR Surveys (not the global list on landing page)
+
+get '/view_your_surveys' do
+  # if session[:user_id] == nil
+  #   redirect '/'
+  # end
+
+  @surveys = User.find(session[:user_id]).surveys
+  erb :"survey_views/list_user_surveys"
 end
 
-# ---------- Delete
+
+
+# TO DO: Delete functionality
+
+# ---------- Delete --------------------
 
 delete '/surveys/:id' do
   survey = Survey.find(params[:id])
   survey.delete
 end
+
+#----------------------------------------
+
+# --- We copied this from Nate's template. Not sure we need a Put/Update
+# ---------- Update (Created f)
+
+#
+# get '/surveys/edit/:id' do
+# # @surveys = Survey.find(params[:id])
+# # erb :"survey_views/edit_survey"
+# end
+
+# get '/surveys/:id' do
+#   @survey = Survey.find(params[:id])
+#   @survey.update(params)
+# erb :"survey_views/display_survey"
+# end
+
+

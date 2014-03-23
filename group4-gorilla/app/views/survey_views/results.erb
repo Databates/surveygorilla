@@ -11,18 +11,8 @@ ADD RESULTS LOGIC HERE
 
     <p>Questions:</p>
     <%@survey.questions.each_with_index do |question|%>
-      <p><%=question.text%></p>
+      <p><%= question.text %></p>
 
-      <div id="<%=question.id%>"></div>
-        <script type="text/javascript">
-          arrayOfData = new Array();
-          <%question.options.each do |option|%>
-            arrayOfData.push(["<%=Answer.where(option_id: option.id).length%>", "<%=option.text%>",'#'+(Math.random()*0xFFFFFF<<0).toString(16)]);
-          <%end%>
-
-          $("#<%=question.id%>").jqBarGraph({ data: arrayOfData });
-         </script>
-         <br><br><br>
-    <%end%>
+    <% end %>
   <%end%>
 </div>

@@ -1,44 +1,18 @@
-// Creating a Survey's Answer Options
 $(document).ready( function(){
 
-  $('#create-survey-form').on('submit', function(event) {
+  // Creating a Survey's Title and Description (with blank-field validations included)
+  $('#add-question-button').on('click', function(event) {
     var surveyTitle = $('#create-survey-form input[name="survey[title]"]').val();
     var surveyDescription = $('#create-survey-form input[name="survey[description]"]').val();
-    if (surveyTitle == false) {
+    if (surveyTitle == "") {
       $('#create-survey-validations').text("The Survey Title cannot be blank.").show().fadeOut( 2500 );
-    } else if (surveyDescription == false) {
+    } else if (surveyDescription == "") {
       $('#create-survey-validations').text("The Survey Description cannot be blank.").show().fadeOut( 2500 );
     } else {
-      $('#create-question-form').show().fadeIn( 500 );
-      $('#create-survey-button, #create-survey-validations').fadeOut( 750 );
+      $('#question-name').show().fadeIn( 500 );
+      $('#add-question-button, #create-survey-validations').fadeOut( 750 );
     }
     event.preventDefault();
   });
 
-  $('#create-question-form').on('submit', function(event) {
-    var surveyQuestion = $('#create-question-form input[name="question[text]"]').val();
-    if (surveyQuestion == false) {
-      $('#create-question-validation').text("The question cannot be blank.").show().fadeOut( 2500 );
-    } else {
-      $('#create-question-form').show();
-    }
-    event.preventDefault();
-  });
-
-
-  $('.add-option').on('click', function(event) {
-    event.preventDefault();
-    var i = $("#inputs .option-field").length + 1;
-    var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
-    holder.removeClass('template');
-    holder.addClass("removable");
-    holder.appendTo("#inputs");
-  });
-
-  $('.remove-last-option').on('click', function(event) {
-    event.preventDefault();
-    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
-    $(".removable:last").remove();
-    // console.log("hello");
-  });
 });

@@ -7,15 +7,6 @@ get '/surveys' do
 erb :"survey_views/display_survey"  #take them to display @ views/survey_views/display_survey.erb
 end
 
-
-# Do we still need this? -  Is anyone using this? I'm not. Just checking
-# post '/survey' do
-
-#   @survey = Survey.find(params[:survey_id])
-
-#   erb :"survey_views/create_question"
-# end
-
 #------------------------------------------------------------------
 
 
@@ -27,15 +18,13 @@ end
 #Unless someone wants the GET survey/new route, let's delete it:
 
 get '/survey/new' do
-  # if session[:user_id] == nil
+  # if session[:user_id] == nil  #We can add in logic to check if current user
   #   redirect '/'
   # end
   erb :"survey_views/create_survey"
 end
 
 #FYI I removed duplicate (get '/survey/create')
-
-
 
 
 post '/survey/create' do

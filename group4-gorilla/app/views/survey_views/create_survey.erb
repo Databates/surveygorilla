@@ -3,15 +3,35 @@
 <p>located in app/views/survey_views/create_survey.erb </p>
 
 <div class="container">
-  <form action='/survey/create' method="POST">
+  <form id="create-survey-form">
     <label>Survey Title:</label><input type="text" name="survey[title]"><br>
-    <label>Survey Description:</label><input type="text" name="survey[description]"><br>
-
-
+    <label>Survey Description:</label><input type="text" name="survey[description]">
     <input type="hidden" name="survey[user_id]" value="<%=session[:user_id]%>">
-
-    <input type="submit" value="submit" class="button">
+    <input id="create-survey-button" type="submit" value="Add a Question" class="button">
+    <span id="create-survey-validations" style="color:red; margin-left: 30px"></span>
   </form>
+
+  <br>
+  <form id="create-question-form" style="display:none">
+    <label>Survey Question: </label><input type="text" name="question[text]"><br>
+    <input id="create-question-button" type="submit" value="Add Additional Response Choices" class="button">
+    <span id="create-question-validation" style="color:red; margin-left: 30px"></span>
+    <label>Choose Response Types You Will Accept</label>
+    <div id="inputs">
+      <select class='option-field' name='answer1'>
+        <option value="select">Dropdown</option>
+        <option value="radio">Radio Buttons</option>
+        <option value="checkbox">Checkboxes</option>
+        <option value="text">Free Response - Line Size</option>
+        <option value="textarea">Free Response - Paragraph Size</option>
+    </div>
+    <button class="add-option" type="button">Add another Option</button>
+    <button class="remove-last-option" type="button">Remove your last Option</button>
+    <br><br>
+    <button type="submit"> Finish Survey</button>
+    <input type="submit" value="Save Survey" class="button">
+  </form>
+
 </div>
 
 
@@ -20,4 +40,3 @@
       t.text        :description
       t.belongs_to  :user
       t.timestamps -->
-

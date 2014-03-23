@@ -1,36 +1,5 @@
 
 <h1> Question: <%= @question.text %></h1>
 
-  <form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
-    <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
-    <label>Please Add Options to your Survey</label>
-    <div id="inputs">
-      <input class='option-field' type='text' name='answer1'>
-    </div>
-
-
-
- <!--    <div id="additional-options"> -->
-      <!-- erb open if @add  erb close -->
-         <!-- erb equal tab   erb :_add_option erb ending tag"  -->
-      <!-- erb open end  erb close -->
-<!--     </div> -->
-
-    <button class="add-option" type="button">Add another Option</button>
-    <!-- <input class="add-option" type="submit" value="Add Another Option"> -->
-    <button class="remove-last-option" type="button">Remove your last Option</button>
-    <!-- <input class="remove-last-option"type="submit" value="Remove Your Last Option"> -->
-    <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
-    <!-- <input type="submit" value="Finish Survey"> -->
-
-    <br><br>
-   <button type="submit"> Finish Survey</button>
-    <input type="submit" value="Save Survey" class="button">
-  </form>
-
-
-<!-- INSERT INTO "answer_choices" ("created_at", "question_id", "updated_at") VALUES ($1, $2, $3)
-RETURNING "id"  [["created_at", 2014-03-22 13:57:32 UTC], ["question_id", 54], ["updated_at", 2014-03-22 13:57:32 UTC]] -->
-
-
-<!-- <input type="hidden" name="survey[user_id]" value="erb=session[:user_id]erb"> -->
+<form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
+</form>

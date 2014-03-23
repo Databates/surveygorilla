@@ -1,9 +1,9 @@
 <div class="container profile">
   <h1><%= current_user.name %>'s Page</h1>
   <ul>
-    <li><a class="button" href="/user/edit/<%= current_user.id %>">Edit Your Profile</a></li>
-    <li><a class="button" href="/surveys">Choose a Survey to Complete</a></li>
     <li><a class="button" href="/survey/new">Create a Survey!</a></li>
+    <li><a class="button" href="/surveys">Choose a Survey to Complete</a></li>
+    <li><a class="button" href="/user/edit/<%= current_user.id %>">Change your Password</a></li>
   </ul>
   <h2>Surveys Taken</h2>
   <ul id="surveys-taken">

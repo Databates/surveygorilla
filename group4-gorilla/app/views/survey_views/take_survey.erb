@@ -1,16 +1,14 @@
-
-
-
-<form action="/survey/take" method="post">
-    <input type="hidden" value="<%= @survey.id %>" name="survey_id"/>
+<form id="take-survey" action="/survey/take" method="post">
+  <input type="hidden" value="<%= @survey.id %>" name="survey_id"/>
   <% @survey.questions.each do |question| %>
-
-    <p><%= question.text %></p>
+    <p class="question-text"><%= question.text %></p>
     <% question.answer_choices.each do |option| %>
-      <input type="radio" name="answers[<%=question.id%>]" value="<%=option.id%>"><%= option.text %><br>
+      <span class="answer-text">
+      <input type="radio" name="answers[<%=question.id%>]" value="<%=option.id%>">
+      <%= option.text %></span>
     <% end %>
   <% end %>
-  <input type="submit" value="Complete Survey"/>
+  <input class="button" type="submit" value="Complete Survey"/>
   </form>
 </div>
 

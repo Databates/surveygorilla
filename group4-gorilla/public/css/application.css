@@ -59,6 +59,16 @@ h1.home  {
   border-bottom: 1px solid #333;
 }
 
+.percent {
+  float: right;
+  weight: 700;
+  padding: 10px;
+  margin-top: -8px;
+  margin-right: -20px;
+  background-color: #fdb813;
+  border-radius: 30px;
+}
+
 .avail-surveys {
   position: fixed;
   left: 20px;
@@ -178,7 +188,7 @@ li {
   display: block;
   background-color: #eee;
   padding: 5px 5px 10px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 #take-survey .button {

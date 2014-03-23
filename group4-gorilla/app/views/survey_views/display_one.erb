@@ -1,9 +1,12 @@
 
 <p class="question-text"><%= @questions[0].text %></p>
  <% @survey.questions.each do |question| %>
+
+
   <ol>
     <% question.answer_choices.each do |choice| %>
-      <li><%= choice.text %></li>
+      <input type="radio" value="<%= choice.text %>">
     <% end %>
   </ol>
 <% end %>
+

@@ -96,7 +96,7 @@ end
 get '/survey/:survey_id/results' do
 
   @survey = Survey.find_by_id(params[:survey_id])
-  @questions = @survey.questions # array
+  # @questions = @survey.questions # array
   # @questions.each {}
   # @answer_choices =
   # @question
@@ -133,9 +133,31 @@ end
 
   get '/survey/:survey_id' do
     @survey = Survey.find(params[:survey_id])
-
-    # erb :take_survey
+    # @questions = @survey.questions # array
+    erb :"survey_views/take_survey"
   end
+
+
+post '/survey/take' do
+ # @survey = Survey.find(params[:survey_id])
+ @survey = Survey.find_by_id(params[:survey_id])
+  # @questions = @survey.questions
+  #@question = @survey.
+
+  params['answers'].each do |key,value|
+    Response.create(
+      user: User.find(session[:user_id]),
+      question: Question.find(key.to_i),
+      answer_choice: AnswerChoice.find(value.to_i)
+    )
+  end
+  redirect to '/confirmation'
+
+end
+
+get '/confirmation' do
+  erb :"survey_views/completed_survey"
+end
 
 
 # ---------- Update

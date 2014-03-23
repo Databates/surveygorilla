@@ -23,14 +23,34 @@
     <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
     <!-- <input type="submit" value="Finish Survey"> -->
 
+    <button type="submit">11am Sunday Testing - Submit Options Button</button>
+
     <br><br>
    <button type="submit"> Finish Survey</button>
     <input type="submit" value="Save Survey" class="button">
   </form>
 
 
-<!-- INSERT INTO "answer_choices" ("created_at", "question_id", "updated_at") VALUES ($1, $2, $3)
-RETURNING "id"  [["created_at", 2014-03-22 13:57:32 UTC], ["question_id", 54], ["updated_at", 2014-03-22 13:57:32 UTC]] -->
+<!-- Dropped in for testing. 11am Sunday 3/23/14 - Ian -->
+<!-- Also commented out application.js entirely -->
+<script>
 
+  $('.add-option').on('click', function(event) {
+    event.preventDefault();
+    var i = $("#inputs .option-field").length + 1;
+    var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
+    holder.removeClass('template');
+    holder.addClass("removable");
+    holder.appendTo("#inputs");
+  });
 
-<!-- <input type="hidden" name="survey[user_id]" value="erb=session[:user_id]erb"> -->
+  $('.remove-last-option').on('click', function(event) {
+    event.preventDefault();
+    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+    $(".removable:last").remove();
+    // console.log("hello");
+  });
+
+});
+
+</script>

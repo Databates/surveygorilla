@@ -45,7 +45,7 @@ post '/survey/create/question' do
   @survey.questions << Question.new(params[:question])
   @question = Question.last
   puts "LOG #{@question}"
-  # erb :"survey_views/create_option"
+  erb :"survey_views/create_option" #turned back on for testing. 11am Sunday 3/23/14s
 end
 
 # LOG {"question"=>{"text"=>"What is your fav burrito?"}}
@@ -127,6 +127,18 @@ get '/survey/:survey_id/results' do
   end
 
   erb :"survey_views/results"
+end
+
+
+#------------ View Your Surveys
+
+get '/view_your_surveys' do
+  # if session[:user_id] == nil
+  #   redirect '/'
+  # end
+
+  @surveys = User.find(session[:user_id]).surveys
+  erb :"survey_views/list_user_surveys"
 end
 
 

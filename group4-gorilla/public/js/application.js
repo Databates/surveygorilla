@@ -1,42 +1,42 @@
-$(document).ready(function() {
-  $('#sign-in').on("submit", function(event) {
-    var sign_in_password = $('#sign-in input[name=password]').val();
-    var sign_in_email = $('#sign-in input[name=email]').val();
+// $(document).ready(function() {
+//   $('#sign-in').on("submit", function(event) {
+//     var sign_in_password = $('#sign-in input[name=password]').val();
+//     var sign_in_email = $('#sign-in input[name=email]').val();
 
-    if ((sign_in_email == false) || (sign_in_password == false)) {
-      event.preventDefault();
-      alert("You're an idiot! You didn't complete the sign in form!");
-    }
-  });
+//     if ((sign_in_email == false) || (sign_in_password == false)) {
+//       event.preventDefault();
+//       alert("You're an idiot! You didn't complete the sign in form!");
+//     }
+//   });
 
-  $('#sign-up').on("submit", function(event) {
-    var sign_up_email = $('#sign-up input[name="user[email]"]').val();
-    var sign_up_password = $('#sign-up input[name="user[password]"]').val();
-    var sign_up_password_confirmation = $('#sign-up input[name="user[password_confirmation]"]').val();
+//   $('#sign-up').on("submit", function(event) {
+//     var sign_up_email = $('#sign-up input[name="user[email]"]').val();
+//     var sign_up_password = $('#sign-up input[name="user[password]"]').val();
+//     var sign_up_password_confirmation = $('#sign-up input[name="user[password_confirmation]"]').val();
 
-    if ((sign_up_email == false) || (sign_up_password == false) || (sign_up_password_confirmation == false)) {
-      event.preventDefault();
-      alert("You're an idiot! You didn't complete the sign up form!");
-    }
-  });
+//     if ((sign_up_email == false) || (sign_up_password == false) || (sign_up_password_confirmation == false)) {
+//       event.preventDefault();
+//       alert("You're an idiot! You didn't complete the sign up form!");
+//     }
+//   });
 
-  $('.add-option').on('click', function(event) {
-    event.preventDefault();
-    var i = $("#inputs .option-field").length + 1;
-    var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
-    holder.removeClass('template');
-    holder.addClass("removable");
-    holder.appendTo("#inputs");
-  });
+//   $('.add-option').on('click', function(event) {
+//     event.preventDefault();
+//     var i = $("#inputs .option-field").length + 1;
+//     var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
+//     holder.removeClass('template');
+//     holder.addClass("removable");
+//     holder.appendTo("#inputs");
+//   });
 
-  $('.remove-last-option').on('click', function(event) {
-    event.preventDefault();
-    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
-    $(".removable:last").remove();
-    // console.log("hello");
-  });
+//   $('.remove-last-option').on('click', function(event) {
+//     event.preventDefault();
+//     // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+//     $(".removable:last").remove();
+//     // console.log("hello");
+//   });
 
-});
+// });
 
 
 

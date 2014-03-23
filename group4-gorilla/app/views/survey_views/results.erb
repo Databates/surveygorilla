@@ -11,7 +11,10 @@
     <%@survey.questions.each_with_index do |question|%>
       <p class="question-text"><%= question.text %></p>
       <% question.answer_choices.each do |choice| %>
-        <p class="answer-text"><%= choice.responses.count %>: <%= choice.text %></p>
+        <p class="answer-text">
+          <b>"<%= choice.text %>"</b> <span class="small">selected <%= choice.responses.count %> times</span>
+          <span class="percent"><%= ((choice.responses.count.to_f / question.responses.count.to_f)*100).round %>%</span>
+        </p>
       <% end %>
     <% end %>
   <%end%>

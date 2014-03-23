@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="large-6 large-offset-3 column">
 		<form class="form" action="/user/edit" method="POST">
+			<input type="text" placeholder="name" name="user[name]" value="<%= current_user.name %>">
 			<input type="text" placeholder="email" name="user[email]" value="<%= current_user.email %>">
       <input type="password" placeholder="Current Password" name="user[current_password]">
 			<input type="password" placeholder="New Password" name="user[password]">

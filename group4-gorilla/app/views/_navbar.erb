@@ -11,6 +11,7 @@
     <ul class="right">
       <% if current_user? %>
         <li><a class="add" href="/survey/new">Add a survey</a></li>
+        <li><a class="add" href="/surveys">View all surveys</a></li>
         <li><a href="/user/signout">Sign Out</a></li>
         <li class="has-dropdown">
           <a href="#"><%= current_user.email %></a>
@@ -23,11 +24,6 @@
         <li><a id="nav-signin">Sign In</a></li>
         <li><a id="nav-signup">Create an Account</a></li>
       <% end %>
-    </ul>
-
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <!-- <li><a href="#">Left Nav Button</a></li> -->
     </ul>
   </section>
 </nav>

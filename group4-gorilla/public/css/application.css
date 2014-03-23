@@ -48,6 +48,17 @@ h1.home  {
   font-size: .75em;
 }
 
+.header {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.title {
+  border-bottom: 1px solid #333;
+}
+
 .avail-surveys {
   position: fixed;
   left: 20px;
@@ -140,14 +151,6 @@ th {
   color: #111;
 }
 
-#surveys-display .description {
-  float:right;
-  padding-left: 8px;
-  border-left: 2px dotted darkgreen;
-  width: 70%;
-  text-align: right;
-}
-
 ul {
   margin: 0;
 }
@@ -170,7 +173,7 @@ li {
   margin: 0;
 }
 
-.answer-text {
+.answer-text, .description {
   font-size: 1.25em;
   display: block;
   background-color: #eee;
@@ -189,7 +192,9 @@ li {
 /* orange higlight for add button */
 .top-bar-section .right li a.add {
   background-color: #B22400;
+  border-left: 6px solid #333;
 }
+
 
 .top-bar-section .right li a.add:hover {
   background-color: #BA3A19;

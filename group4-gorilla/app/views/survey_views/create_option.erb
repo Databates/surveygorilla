@@ -1,40 +1,18 @@
-
 <h1> Question: <%= @question.text %></h1>
+<form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
+  <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
+  <label>Please Add Options to your Survey</label>
+  <div id="inputs">
+    <input class='option-field' type='text' name='answer1'>
+  </div>
+  <button class="add-option" type="button">Add another Option</button>
+  <button class="remove-last-option" type="button">Remove your last Option</button>
+  <button type="submit">11am Sunday Testing - Submit Options Button</button>
+  <button type="submit"> Finish Survey</button>
+  <input type="submit" value="Save Survey" class="button">
+</form>
 
-  <form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
-    <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
-    <label>Please Add Options to your Survey</label>
-    <div id="inputs">
-      <input class='option-field' type='text' name='answer1'>
-    </div>
-
-
-
- <!--    <div id="additional-options"> -->
-      <!-- erb open if @add  erb close -->
-         <!-- erb equal tab   erb :_add_option erb ending tag"  -->
-      <!-- erb open end  erb close -->
-<!--     </div> -->
-
-    <button class="add-option" type="button">Add another Option</button>
-    <!-- <input class="add-option" type="submit" value="Add Another Option"> -->
-    <button class="remove-last-option" type="button">Remove your last Option</button>
-    <!-- <input class="remove-last-option"type="submit" value="Remove Your Last Option"> -->
-    <!-- <a href='/survey/create/question/option' method="POST"><button>Add Another Question</button></a> -->
-    <!-- <input type="submit" value="Finish Survey"> -->
-
-    <button type="submit">11am Sunday Testing - Submit Options Button</button>
-
-    <br><br>
-   <button type="submit"> Finish Survey</button>
-    <input type="submit" value="Save Survey" class="button">
-  </form>
-
-
-<!-- Dropped in for testing. 11am Sunday 3/23/14 - Ian -->
-<!-- Also commented out application.js entirely -->
 <script>
-
   $('.add-option').on('click', function(event) {
     event.preventDefault();
     var i = $("#inputs .option-field").length + 1;
@@ -46,11 +24,6 @@
 
   $('.remove-last-option').on('click', function(event) {
     event.preventDefault();
-    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
     $(".removable:last").remove();
-    // console.log("hello");
   });
-
-});
-
 </script>

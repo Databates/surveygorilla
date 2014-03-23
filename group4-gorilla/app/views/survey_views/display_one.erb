@@ -1,12 +1,20 @@
 
+
 <p class="question-text"><%= @questions[0].text %></p>
- <% @survey.questions.each do |question| %>
 
+<div class="container">
 
-  <ol>
-    <% question.answer_choices.each do |choice| %>
-      <input type="radio" value="<%= choice.text %>">
-    <% end %>
-  </ol>
-<% end %>
+     <% @survey.questions.each do |question| %>
+        <ol>
+        <% question.answer_choices.each do |option| %>
 
+          <li><%= option.text %></li>
+      <% end %>
+      </ol>
+  <% end %>
+
+   <button type="button" class="survey-confirmation-button"><a href="/surveys">Go back to All Surveys</a></button>
+
+    <button type="button" class="survey-confirmation-button"><a href="/view_your_surveys">Show me all MY Surveys!</a></button>
+
+</div>

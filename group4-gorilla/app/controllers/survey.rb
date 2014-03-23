@@ -12,16 +12,11 @@ get '/survey/create' do
 end
 
 
-
-
 post '/survey' do
 
   @survey = Survey.find(params[:survey_id])
 
-# variable survey
-# {"title"=>"whatever", "description"=>"fuck off", "user_id"=>"6"}
-
-  erb :"survey_views/create_question" #take them to create a question
+  erb :"survey_views/create_question"
 end
 
 
@@ -93,10 +88,11 @@ end
 
 
 
-get '/survey/:survey_id/results' do
+#----------Display an individual Survey to the User ----------
+get '/survey/:survey_id/individual' do #display_survey.erb sends users to display_one.erb,
 
   @survey = Survey.find_by_id(params[:survey_id])
-  # @questions = @survey.questions # array
+  @questions = @survey.questions # array
   # @questions.each {}
   # @answer_choices =
   # @question
@@ -122,6 +118,16 @@ get '/survey/create/confirm' do
 end
 
 
+#----------- View your Results ----------------
+
+get '/survey/:survey_id/results' do
+  @survey = Survey.find_by_id(params[:survey_id])
+  if @survey == nil
+    @error = true
+  end
+
+  erb :"survey_views/results"
+end
 
 
 
@@ -141,7 +147,7 @@ end
 post '/survey/take' do
  # @survey = Survey.find(params[:survey_id])
  @survey = Survey.find_by_id(params[:survey_id])
-  # @questions = @survey.questions
+  @questions = @survey.questions
   #@question = @survey.
 
   params['answers'].each do |key,value|

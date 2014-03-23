@@ -1,0 +1,22 @@
+<h1><%= current_user.name %>'s Surveys</h1>
+<div class="container">
+  <%if @surveys%>
+    <ul>
+    <% @surveys.each do |survey|%>
+
+
+  <div id="surveys-display">
+    <li>
+        <a href="/survey/<%=survey.id%>/individual"><%=survey.title%></a>
+      | <a href="/survey/<%=survey.id%>/results">View Results</a></span>
+
+    </li>
+
+  </div>
+    <%end%>
+    </ul>
+  <%end%>
+</div>
+
+
+<button type="button" class="survey-confirmation-button"><a href="/surveys">Take back to the home page</a></button>

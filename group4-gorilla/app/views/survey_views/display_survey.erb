@@ -3,7 +3,7 @@
   <h1> SURVEYS </h1>
   <%@surveys.each do |survey| %>
   <div id="surveys-display">
-      <p class=""><a href="/survey/<%=survey.id%>/results"><%=survey.title%></a><span class="author"> by <%=survey.user.name%></span>
+      <p class=""><a href="/survey/<%=survey.id%>/individual"><%=survey.title%></a><span class="author"> by <%=survey.user.name%></span>
       <span>| <a href="/survey/<%=survey.id%>"> Take this survey</a></span>
       </p>
   </div>

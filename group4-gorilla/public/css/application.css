@@ -6,7 +6,8 @@
 body {
   width: 600px;
   margin: 90px auto 0;
-  background-image: url('../img/surveygorillazLogo.png');
+  background-image: url('../img/gorillaz-5.jpg');
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: 0 45px;
   font-family: 'Roboto Condensed', sans-serif;
@@ -31,6 +32,20 @@ nav {
   right: -5px;
 }
 
+.home h1 {
+  color: white;
+  background-color: maroon;
+  font-weight: 300;
+  opacity: 0.75;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 42px;
+  text-align: center;
+  padding: 20px 0 20px 50px;
+  clear: both;
+}
+
 .avail-surveys {
   position: fixed;
   left: 20px;
@@ -46,10 +61,28 @@ nav {
   color: #B22400;
 }
 
+#surveys-taken {
+  border-top: 1px solid #eee;
+}
+
+#surveys-taken li {
+  border-bottom: 1px solid #eee;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+#surveys-taken li a {
+  display: block;
+}
+
+#surveys-taken li:hover {
+  background-color: #ddd;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
-  padding: 0px 20px 20px 20px;
+  padding: 0;
 }
 th {
   text-align: left;
@@ -88,8 +121,17 @@ th {
   text-align: right;
 }
 
+ul {
+  margin: 0;
+}
+
 li {
   text-align: left;
+  list-style-type: none;
+}
+
+.profile .button {
+  font-size: 1.25em;
 }
 
 .option-field.template {

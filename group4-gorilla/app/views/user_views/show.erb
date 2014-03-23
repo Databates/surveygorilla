@@ -1,14 +1,23 @@
-<div class="container">
+<div class="container profile">
   <h1><%= current_user.name %>'s Page</h1>
   <ul>
-    <li><a href="/user_views/edit">Edit your Account</a></li>
-    <li><a href="/user/edit/<%= current_user.id %>">Edit Your Profile</a></li>
-    <li><a href="/user/signout">Sign Out</a></li>
-    <li><a href="/surveys">Choose a Survey to Complete</a></li>
-    <li><a href="/survey/<%= current_user.id %>">Create a Survey!</a></li>
-    <li><a href="/survey/new">Create a Survey!</a></li>
+    <li><a class="button" href="/user/edit/<%= current_user.id %>">Edit Your Profile</a></li>
+    <li><a class="button" href="/surveys">Choose a Survey to Complete</a></li>
+    <li><a class="button" href="/survey/new">Create a Survey!</a></li>
+  </ul>
+  <h2>Surveys Taken</h2>
+  <ul id="surveys-taken">
+    <% @user_surveys.each do |survey| %>
+    <li><a href="/survey/<%=survey.id%>"><%= survey.title %></a></li>
+    <% end %>
   </ul>
 </div>
 
+<script>
+  $(document).ready(function(){
+    $('body').css('background-image', 'url(../img/d4idm19.png)');
+    $('body').css('background-position', '150% 100%');
+  })
+</script>
 
 

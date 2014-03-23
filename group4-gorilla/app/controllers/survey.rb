@@ -143,17 +143,6 @@ get '/confirmation' do
 end
 
 
-#----------- View the Results of your Surveys ----------------
-
-get '/survey/:survey_id/results' do
-  @survey = Survey.find_by_id(params[:survey_id])
-  if @survey == nil
-    @error = true
-  end
-
-  erb :"survey_views/results"
-end
-
 
 #------------ View a list of YOUR Surveys (not the global list on landing page)
 
@@ -165,6 +154,21 @@ get '/view_your_surveys' do
   @surveys = User.find(session[:user_id]).surveys
   erb :"survey_views/list_user_surveys"
 end
+
+
+
+#----------- View the RESULTS of your Surveys ----------------
+
+get '/survey/:survey_id/results' do
+  @survey = Survey.find_by_id(params[:survey_id])
+  if @survey == nil
+    @error = true
+  end
+
+  erb :"survey_views/results"
+end
+
+
 
 
 

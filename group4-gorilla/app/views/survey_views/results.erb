@@ -1,1 +1,18 @@
 ADD RESULTS LOGIC HERE
+
+
+<div class="container">
+  <%if @error%>
+    <h1>404!</h1>
+    <p> Survey does not exist!</p>
+  <%else%>
+    <h1>Results <%=@survey.title%></h1>
+    <p>Survey Description:<p><h3><%=@survey.description%></h3><br><br>
+
+    <p>Questions:</p>
+    <%@survey.questions.each_with_index do |question|%>
+      <p><%= question.text %></p>
+
+    <% end %>
+  <%end%>
+</div>

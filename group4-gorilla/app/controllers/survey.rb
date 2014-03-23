@@ -1,4 +1,4 @@
- 
+
 
 #---- Landing Page After Login/Signup:  Show ALL User Surveys ----------------
 
@@ -24,18 +24,18 @@ end
 
 #--- Create a Survey Routes ------------------------------------------
 
-#Unless someone wants the GET survey/new route, let's delete it: 
+#Unless someone wants the GET survey/new route, let's delete it:
 
-# get '/survey/new' do
-#   erb :"survey_views/create_survey"
-# end
-
-get '/survey/create' do
+get '/survey/new' do
   # if session[:user_id] == nil
   #   redirect '/'
   # end
   erb :"survey_views/create_survey"
 end
+
+#FYI I removed duplicate (get '/survey/create')
+
+
 
 
 post '/survey/create' do
@@ -95,7 +95,7 @@ post '/survey/create/answer_choices' do
   redirect '/surveys' #send them back to the landing page with ALL surveys
 end
 
-# Our jquery truck brings in answers like this: 
+# Our jquery truck brings in answers like this:
 # {"answer1"=>"burrito", "answer2"=>"pizza", "answer3"=>"taco "}
 
 
@@ -148,7 +148,7 @@ post '/survey/take' do
 end
 
 
-#redirect user to confirmation page after taking survey: 
+#redirect user to confirmation page after taking survey:
 get '/confirmation' do
   erb :"survey_views/completed_survey"
 end

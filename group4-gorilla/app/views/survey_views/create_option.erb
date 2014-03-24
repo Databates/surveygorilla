@@ -7,23 +7,6 @@
   </div>
   <button class="add-option" type="button">Add another Option</button>
   <button class="remove-last-option" type="button">Remove your last Option</button>
-  <button type="submit">11am Sunday Testing - Submit Options Button</button>
-  <button type="submit"> Finish Survey</button>
-  <input type="submit" value="Save Survey" class="button">
+  <button type="submit">Submit Options</button>
 </form>
 
-<script>
-  $('.add-option').on('click', function(event) {
-    event.preventDefault();
-    var i = $("#inputs .option-field").length + 1;
-    var holder = $("<input class='option-field removable' type='text' name" + "='answer" + i +"'>");
-    holder.removeClass('template');
-    holder.addClass("removable");
-    holder.appendTo("#inputs");
-  });
-
-  $('.remove-last-option').on('click', function(event) {
-    event.preventDefault();
-    $(".removable:last").remove();
-  });
-</script>

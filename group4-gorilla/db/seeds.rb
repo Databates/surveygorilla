@@ -22,8 +22,8 @@ fav_style.answer_choices << fav_style4
 best_city = Question.create(text: "What city has the best Pizza?" )
 best_city1 = AnswerChoice.create(text:"New York")
 best_city2 = AnswerChoice.create(text:"Chicago")
-best_city3 = AnswerChoice.create(text:"Chicago")
-best_city4 = AnswerChoice.create(text:"Chicago")
+best_city3 = AnswerChoice.create(text:"LA")
+best_city4 = AnswerChoice.create(text:"Napels")
 best_city.answer_choices << best_city1
 best_city.answer_choices << best_city2
 best_city.answer_choices << best_city3
@@ -39,10 +39,16 @@ fav_style_response3 = Response.create(question: fav_style, user: cameron, answer
 fav_style_response4 = Response.create(question: fav_style, user: pablo, answer_choice: fav_style2)
 fav_style_response5 = Response.create(question: fav_style, user: dan, answer_choice: fav_style4)
 
+best_city_response1 = Response.create(question: best_city, user: ian, answer_choice: best_city1)
+best_city_response2 = Response.create(question: best_city, user: marco, answer_choice: best_city1)
+best_city_response3 = Response.create(question: best_city, user: cameron, answer_choice: best_city2)
+best_city_response4 = Response.create(question: best_city, user: pablo, answer_choice: best_city3)
+best_city_response5 = Response.create(question: best_city, user: dan, answer_choice: best_city4)
+
 taken_survey = UserSurvey.create(user:cameron, survey: pizza_survey)
 
 # User table test
-puts ian.email == "ian@yaoho.com" # true
+puts ian.email == "ian@yahoo.com" # true
 
 # User/Survey Associations test
 ian.surveys.count == 1

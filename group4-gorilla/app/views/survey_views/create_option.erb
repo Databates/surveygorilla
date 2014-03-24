@@ -8,12 +8,42 @@
   </div>
   <button class="add-option" type="button">Add another Option</button>
   <button class="remove-last-option" type="button">Remove your last Option</button>
-  <button type="submit">Submit Options</button>
+  <button id="submit-option-button" type="submit">Submit Options</button>
 </form>
+
+<div id="empty-warning" style="color:red;">
+  </div>
 
 <script>
   $(document).ready(function(){
-    $('body').css('background-image', 'url(/img/1155959-gorillaz.jpg)');
-    $('body').css('background-position', '50% 100%');
-  })
+    // $('body').css('background-image', 'url(/img/1155959-gorillaz.jpg)');
+    // $('body').css('background-position', '50% 100%');
+
+  $('.add-option').on('click', function(event) {
+    event.preventDefault();
+    var i = $("#inputs .option-field").length + 1;
+    var holder = $("<input class='option-field' type='text' name" + "='answer" + i +"'>");
+    // holder.removeClass('template');
+    holder.addClass("removable");
+    holder.appendTo("#inputs");
+  });
+
+  $('.remove-last-option').on('click', function(event) {
+    event.preventDefault();
+    // $('.option-field.template').clone().show().toggleClass('template').appendTo('.option-field');
+    $(".removable:last").remove();
+    // console.log("hello");
+  });
+
+
+  $('#submit-option-button').on("click", function(event) {
+    var answerChoice = $('#submit-option-form .option-field').val();
+    if (answerChoice == "") {
+      event.preventDefault();
+      $('#empty-warning').text("The Option field cannot be blank.").show().fadeOut( 2500 );
+  }
+    // var surveyTitle = $('#submit-option-form input[name="survey[title]"]').val();
+  });
+});
+
 </script>

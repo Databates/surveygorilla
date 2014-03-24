@@ -1,4 +1,5 @@
-<h1> Question: <%= @question.text %></h1>
+<p>Question:</p>
+<h1><%= @question.text %></h1>
 <form id="submit-option-form" action='/survey/create/answer_choices' method="POST">
   <!-- <h2>Question: erb= @question.text end erb tag</h2> -->
   <label>Please Add Options to your Survey</label>
@@ -10,3 +11,9 @@
   <button type="submit">Submit Options</button>
 </form>
 
+<script>
+  $(document).ready(function(){
+    $('body').css('background-image', 'url(/img/1155959-gorillaz.jpg)');
+    $('body').css('background-position', '50% 100%');
+  })
+</script>

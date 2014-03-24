@@ -14,7 +14,7 @@ https://trello.com/b/N5av36Nx/surveygorilla
 
 Team Dynamic
 
-On Friday we split into two groups, Cameron and Marco building the activerecord database and Ian, Dan, and Pablo setting up the skeleton for the routes and beginnning development of our views. After this phase of development we split off individually to work on different parts of the project for the remainder of the weekend. Dan focused mostly on JQuery, Marco on CSS presentation, Ian on the Views and routing, and Cameron on Database CRUD(...until he got sick). 
+On Friday we split into two groups, Cameron and Marco building the activerecord database and Ian, Dan, and Pablo setting up the skeleton for the routes and beginnning development of our views. After this phase of development we split off individually to work on different parts of the project for the remainder of the weekend. Dan focused mostly on JQuery, Marco on CSS presentation, Ian on the Views and routing, and Cameron on Database CRUD and bugfix(...until he got sick). 
 
 
 

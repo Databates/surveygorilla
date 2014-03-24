@@ -1,18 +1,18 @@
 <div class="container">
   <h1>Current Surveys</h1>
-  <%@surveys.each do |survey| %>
+  <% @surveys.each do |survey| %>
   <div id="surveys-display">
     <p>
-      <a href="/survey/<%=survey.id%>/individual"><%=survey.title%></a>
+      <a href="/survey/<%=survey.id%>"><%=survey.title%></a>
       <span class="author"> by <%=survey.user.name%></span>
     </p>
     <p>
-      <span class="link"><a href="/survey/<%=survey.id%>"> Take this survey</a></span>
+      <span class="link"><a href="/survey/<%=survey.id%>">Take this survey</a></span>
       <span class="link"><a href="/survey/<%=survey.id%>/results">View Results</a></span>
     </p>
   </div>
   <%end%>
-</div
+</div>
       
 
 

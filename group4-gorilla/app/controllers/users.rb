@@ -59,7 +59,7 @@ get '/user/edit/:id' do
   erb :"user_views/edit"
 end
 
-# POST Route to edit your account
+# post Route to edit your account
 
 post '/user/edit' do
   @user = User.find(session[:user_id])

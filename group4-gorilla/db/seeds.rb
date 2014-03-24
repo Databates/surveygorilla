@@ -1,45 +1,63 @@
-a = User.create(email: "ian@yaoho.com",name: "Ian" , password: "1234", password_confirmation: "1234")
-b = User.create(email: "pablo@yahoo.com", name: "Pablo", password: "1234", password_confirmation: "1234")
-c = User.create(email: "cam@yahoo.com", name: "Cam", password: "1234", password_confirmation: "1234")
-d = User.create(email: "marco@yahoo.com", name: "Marco", password: "1234", password_confirmation: "1234")
-e = User.create(email: "dan@yahoo.com", name: "Dan", password: "1234", password_confirmation: "1234")
+ian = User.create(email: "ian@yahoo.com",name: "Ian" , password: "1234", password_confirmation: "1234")
+pablo = User.create(email: "pablo@yahoo.com", name: "Pablo V", password: "1234", password_confirmation: "1234")
+cameron = User.create(email: "cam@yahoo.com", name: "Cam J", password: "1234", password_confirmation: "1234")
+marco = User.create(email: "marco.bbcm@gmail.com", name: "Marco M", password: "1derfly", password_confirmation: "1derfly")
+dan = User.create(email: "dan@yahoo.com", name: "Dan B", password: "1234", password_confirmation: "1234")
 
 # New survey, created by user 'a'
-survey = Survey.create(title: "Pizza", description: "dsjsgfkgjjnghlj", user_id: a.id)
+pizza_survey = Survey.create(title: "Pizza Poll", description: "Tell us about your favorite pizza and represent your home town", user_id: ian.id)
 
 # Question #1
-q1 = Question.create(text: "Do you like pepperoni?")
-answer1 = AnswerChoice.create(text:"yes")
-answer2 = AnswerChoice.create(text:"no")
-q1.answer_choices << answer1
-q1.answer_choices << answer2
+fav_style = Question.create(text: "What's your favorite style of pizza?")
+fav_style1 = AnswerChoice.create(text:"Thin-Crust")
+fav_style2 = AnswerChoice.create(text:"Deep-Dish")
+fav_style3 = AnswerChoice.create(text:"Stuffed")
+fav_style4 = AnswerChoice.create(text:"Pan")
+fav_style.answer_choices << fav_style1
+fav_style.answer_choices << fav_style2
+fav_style.answer_choices << fav_style3
+fav_style.answer_choices << fav_style4
 
 # Question #2
-q2 = Question.create(text: "Deep dish or NY?" )
-answer3 = AnswerChoice.create(text:"Deep Dish")
-answer4 = AnswerChoice.create(text:"Dollar Slice")
-q2.answer_choices << answer3
-q2.answer_choices << answer4
+best_city = Question.create(text: "What city has the best Pizza?" )
+best_city1 = AnswerChoice.create(text:"New York")
+best_city2 = AnswerChoice.create(text:"Chicago")
+best_city3 = AnswerChoice.create(text:"LA")
+best_city4 = AnswerChoice.create(text:"Napels")
+best_city.answer_choices << best_city1
+best_city.answer_choices << best_city2
+best_city.answer_choices << best_city3
+best_city.answer_choices << best_city4
 
 # Add questions to survey
-survey.questions << q1
-survey.questions << q2
+pizza_survey.questions << fav_style
+pizza_survey.questions << best_city
 
-response = Response.create(question: q2, user: c, answer_choice: answer3)
+fav_style_response1 = Response.create(question: fav_style, user: ian, answer_choice: fav_style1)
+fav_style_response2 = Response.create(question: fav_style, user: marco, answer_choice: fav_style1)
+fav_style_response3 = Response.create(question: fav_style, user: cameron, answer_choice: fav_style2)
+fav_style_response4 = Response.create(question: fav_style, user: pablo, answer_choice: fav_style2)
+fav_style_response5 = Response.create(question: fav_style, user: dan, answer_choice: fav_style4)
 
-taken_survey = UserSurvey.create(user:c,survey:survey)
+best_city_response1 = Response.create(question: best_city, user: ian, answer_choice: best_city1)
+best_city_response2 = Response.create(question: best_city, user: marco, answer_choice: best_city1)
+best_city_response3 = Response.create(question: best_city, user: cameron, answer_choice: best_city2)
+best_city_response4 = Response.create(question: best_city, user: pablo, answer_choice: best_city3)
+best_city_response5 = Response.create(question: best_city, user: dan, answer_choice: best_city4)
+
+taken_survey = UserSurvey.create(user:cameron, survey: pizza_survey)
 
 # User table test
-puts a.email == "ian@yaoho.com" # true
+puts ian.email == "ian@yahoo.com" # true
 
 # User/Survey Associations test
-a.surveys.count == 1
+ian.surveys.count == 1
 
 # Survey/Question Associations test
-survey.questions.count == 2
+pizza_survey.questions.count == 2
 
 # Question/AnswerChoice Associations test
-q1.answer_choices.count == 2
+fav_style.answer_choices.count == 4
 
 # AnswerChoice/Response
-answer1.responses.count == 1
+fav_style1.responses.count == 2

@@ -9,7 +9,6 @@ end
 #---Create a Survey Routes--------------------------------------------
 
 #Unless someone wants the GET survey/new route, let's delete it:
-
 get '/survey/new' do
   erb :"survey_views/create_survey"
 end
@@ -21,33 +20,26 @@ post '/survey/create' do
   redirect '/survey/create/question'
 end
 
-#------Create a Question Route-------------------
+#------Create a Question Route----------------------------------------
 
 get '/survey/create/question' do
-  # if session[:user_id] == nil  #Add this in to make sure the user is in a current session later.
-  #   redirect '/'
-  # end
   erb :"survey_views/create_question"
 end
 
-
 post '/survey/create/question' do
-  # puts "LOG #{params.inspect}"
+  puts "LOG #{params.inspect}"
   @survey = Survey.find(session[:current_survey])
   # puts "LOG #{@survey}"
   @survey.questions << Question.new(params[:question])
   @question = Question.last
   # puts "LOG #{@question}"
-  erb :"survey_views/create_option" #turned back on for testing. 11am Sunday 3/23/14s
+  erb :"survey_views/create_option"
+  #turned back on for testing. 11am Sunday 3/23/14s
   # redirect '/survey/create/option'
 end
 
-# LOG {"question"=>{"text"=>"What is your fav burrito?"}}
 
-
-
-
-#--------- Create AnswerChoices (Options) Routes --------------------------------------
+#--------- Create AnswerChoices (Options) Routes ---------------------
 
 get 'survey/create/answer_choices' do
   # if session[:user_id] == nil

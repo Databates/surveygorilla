@@ -7,8 +7,8 @@
 * Pablo Vergel  
 
 
-[Trello](https://trello.com/b/N5av36Nx/surveygorilla)
-[Wireframes](https://gomockingbird.com/mockingbird/#l1re9il)
+[Trello Page](https://trello.com/b/N5av36Nx/surveygorilla)  
+[Wireframes](https://gomockingbird.com/mockingbird/#l1re9il)  
 
 ![SurveyGorillaz Schema](http://i.minus.com/inaPRJCSGMIYa.png)
 

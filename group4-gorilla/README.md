@@ -1,10 +1,10 @@
 group 4
 
-Cameron Johnson
-Marco Morales
-Ian Bates
-Dan Brown
-Pablo Vergel
+* Cameron Johnson  
+* Marco Morales  
+* Ian Bates  
+* Dan Brown  
+* Pablo Vergel  
 
 
 https://trello.com/b/N5av36Nx/surveygorilla

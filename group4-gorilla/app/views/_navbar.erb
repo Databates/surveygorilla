@@ -10,8 +10,10 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <% if current_user? %>
-        <li><a class="add" href="/survey/new">Add a survey</a></li>
-        <li><a class="add" href="/surveys">View all surveys</a></li>
+        <li><a class="add" href="/survey/new">Create Survey</a></li>
+        <li><a class="add" href="/surveys">All Surveys</a></li>
+        <li><a class="add" href="/view_your_surveys">My Surveys</a></li>
+        
         <li><a href="/user/signout">Sign Out</a></li>
         <li class="has-dropdown">
           <a href="#"><%= current_user.email %></a>

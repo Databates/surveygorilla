@@ -13,7 +13,7 @@ post '/user/signin' do
 end
 
 get '/user/signin' do
-  erb :"user_views/_signin_form"
+  erb :"user_views/signin"
 end
 
 get '/user/signout' do

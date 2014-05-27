@@ -14,8 +14,7 @@ get '/survey/new' do
 end
 
 post '/survey/create' do
-  survey_params = params[:survey].map( |p| h p )
-  survey = Survey.create(survey_params)
+  survey = Survey.create(params[:survey])
   session[:current_survey] = survey.id
   # create survey session and set it equal to the new survey id
   redirect '/survey/create/question'

@@ -4,17 +4,17 @@
     <p> Survey does not exist!</p>
   <% else %>
  <p class="header">Survey results of:</p>
-    <h1 class="title"><%=@survey.title%></h1>
+    <h1 class="title"><%=h @survey.title%></h1>
     <p class="header">Survey Description:<p>
-    <p class="description"><%=@survey.description%></p>
+    <p class="description"><%=h @survey.description%></p>
     <p class="header">Questions:</p>
     <%@survey.questions.each_with_index do |question|%>
-      <p class="question-text"><%= question.text %></p>
+      <p class="question-text"><%=h question.text %></p>
       <% question.answer_choices.each do |choice| %>
         <p class="answer-text">
-          <b>"<%= choice.text %>"</b> <span class="small">selected <%= choice.responses.count %> times</span>
+          <b>"<%=h choice.text %>"</b> <span class="small">selected <%=h choice.responses.count %> times</span>
           <% if question.responses.exists? %>
-          <span class="percent"><%= ((choice.responses.count.to_f / question.responses.count.to_f)*100).round %>%</span>
+          <span class="percent"><%=h ((choice.responses.count.to_f / question.responses.count.to_f)*100).round %>%</span>
           <% end %>
         </p>
       <% end %>

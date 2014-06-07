@@ -1,6 +1,18 @@
 // Client-side Email/Password Validations
 $(document).ready(function() {
 
+  $('#nav-signin').on('click', function(e) {
+      e.preventDefault();
+      $('#signup-box').hide();
+      $('#signin-box').slideToggle();
+    });
+
+    $('#nav-signup').on('click', function(e) {
+      e.preventDefault();
+      $('#signin-box').hide();
+      $('#signup-box').slideToggle();
+    })
+
   $('#sign-in').on("submit", function(event) {
     var sign_in_password = $('#sign-in input[name=password]').val();
     var sign_in_email = $('#sign-in input[name=email]').val();
@@ -18,9 +30,8 @@ $(document).ready(function() {
 
     if ((sign_up_email == false) || (sign_up_password == false) || (sign_up_password_confirmation == false)) {
       event.preventDefault();
-      alert("You're an idiot! You didn't complete the sign up form!");
+      alert("Please fill in all the required fields.");
     }
   });
-});
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+});

@@ -1,31 +1,25 @@
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
+<nav class="top-bar innerwidth" data-topbar>
+  <ul id="logo" class="left">
     <li class="name">
-      <h1 class='logo'><a href="/"><span>survey</span>Gorillaz</a></h1>
+      <h1><a href="/"><span>survey</span>Gorillaz</a></h1>
     </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <% if current_user? %>
-        <li><a class="add" href="/survey/new">Create Survey</a></li>
-        <li><a class="add" href="/surveys">All Surveys</a></li>
-        <li><a class="add" href="/view_your_surveys">My Surveys</a></li>
-        
-        <li><a href="/user/signout">Sign Out</a></li>
-        <li class="has-dropdown">
-          <a href="#"><%= current_user.email %></a>
-          <ul class="dropdown">
-            <li><a href="/user/<%= current_user.id %>">Profile Page</a></li>
-            <li><a href="/user/edit/<%= current_user.id %>">Edit</a></li>
-          </ul>
-        </li>
-      <% else %>
-        <li><a id="nav-signin">Sign In</a></li>
-        <li><a id="nav-signup">Create an Account</a></li>
-      <% end %>
-    </ul>
-  </section>
+  <ul id="usernav" class="right">
+    <% if current_user? %>
+      <li><a class="add" href="/survey/new">Create Survey</a></li>
+      <li><a class="add" href="/surveys">All Surveys</a></li>
+      <li><a class="add" href="/view_your_surveys">My Surveys</a></li>
+      <li><a href="/user/signout">Sign Out</a></li>
+      <li class="has-dropdown">
+        <a href="#"><%= current_user.email %></a>
+        <ul class="dropdown">
+          <li><a href="/user/<%= current_user.id %>">Profile Page</a></li>
+          <li><a href="/user/edit/<%= current_user.id %>">Edit</a></li>
+        </ul>
+      </li>
+    <% else %>
+      <li><a id="nav-signin">Sign In</a></li>
+      <li><a id="nav-signup">Create an Account</a></li>
+    <% end %>
+  </ul>
 </nav>

@@ -1,26 +1,6 @@
-<h1 class="home">"Surveyz forever, surveyz free, surveyz forever you and me"</h1>
-<div class="container home">
-</div>
+<h1 class="home">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
 <div id="signin-box"><%= erb :"user_views/_signin_form" %></div>
 <div id="signup-box"><%= erb :"user_views/_signup_form" %></div>
+<div id="heroshot"></div>
 
-<script>
-  $(document).ready(function() {
-    $('body').css('background-image', 'url(../img/gorillaz-5.jpg)');
-    $('body').css('background-position', '0 45px');
-    $('body').css('background-size', '100%');
-
-    $('#nav-signin').on('click', function(e) {
-      e.preventDefault();
-      $('#signup-box').hide();
-      $('#signin-box').show();
-    });
-
-    $('#nav-signup').on('click', function(e) {
-      e.preventDefault();
-      $('#signin-box').hide();
-      $('#signup-box').show();
-    })
-  })
-</script>
 

@@ -1,6 +1,14 @@
-<h1 class="home">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
-<div id="signin-box"><%= erb :"user_views/_signin_form" %></div>
-<div id="signup-box"><%= erb :"user_views/_signup_form" %></div>
+<div class="header-box">
+  <h1 class="home innerwidth">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
+</div>
+<div id="forms">
+    <%= erb :"user_views/_signin_form" %>
+    <%= erb :"user_views/_signup_form" %>
+    <%= erb :"user_views/_guest_form" %>
+</div>
+<div class="button-wrapper">
+  <button class="button close" type="button">x</button>
+</div>
 <div id="heroshot"></div>
 
 

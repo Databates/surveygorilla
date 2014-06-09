@@ -10,6 +10,7 @@ a {
 
 body {
   width: 100%;
+  color: #333;
   margin: 0 auto;
   background-repeat: no-repeat;
   font-family: "tablet-gothic-semi-condensed";
@@ -45,7 +46,8 @@ nav .right {
 }
 
 #usernav {
-  line-height: 44px;
+  line-height: 40px;
+  height: inherit;
 }
 
 #usernav li {
@@ -74,22 +76,21 @@ nav .right {
   right: -4px;
 }
 
-h1.home  {
-  color: white;
+.header-box {
   background-color: #52527A;
-  font-family: "tablet-gothic",sans-serif;
-  font-weight: 200;
-  font-size: 2em;
-  width: 100%;
-  margin: 0;
-  text-align: center;
   padding: 40px 0;
+  width: 100%;
+  overflow: hidden;
 }
 
-h1.home:after {
-  display: block;
-  clear: both;
-  content: "";
+h1.home  {
+  color: white;
+  background-color: transparent;
+  font-family: "tablet-gothic";
+  font-weight: 200;
+  font-size: 2em;
+  margin: auto;
+  text-align: center;
 }
 
 #heroshot {
@@ -99,7 +100,6 @@ h1.home:after {
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 0 -100px;
-  margin-top: 2px;
 }
 
 .small {
@@ -117,6 +117,22 @@ h1.home:after {
   border-bottom: 1px solid #333;
 }
 
+#guest {
+  background-color: #8A2E5C;
+  color: white;
+}
+
+#usernav #guest:hover {
+  background-color: #7C2953;
+}
+
+.button-wrapper {
+  width: 100%;
+  height: 0;
+  position: relative;
+  top: -20px;
+}
+
 .button {
   font-weight: 700;
   border-style: none;
@@ -125,10 +141,50 @@ h1.home:after {
   background-color: #8A2E5C;
 }
 
+.button.close {
+  color: white;
+  background-color: #999;
+  padding: 0 0 4px 0;
+  display: none;
+  margin: 0 auto;
+  border: 4px solid white;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  clear: both; 
+  font-family: "tablet-gothic";
+  font-size: 1.25em;
+  overflow: visible;
+}
+
+.button.close:focus {
+  outline: none;
+}
+
 input {
   padding: 10px;
+  display: inline;
   border-style: none;
   background-color: #eee;
+  font-family: "tablet-gothic";
+  margin-bottom: 4px;
+}
+
+#guest-checkin label {
+  text-align: center;
+  display: block;
+  font-size: 2em;
+  font-family: "tablet-gothic";
+  font-weight: 200;
+}
+
+#guest-checkin input[type="text"],
+#guest-checkin input[type="textarea"] {
+  width: 50%;
+}
+
+#guest-checkin input {
+  display: inline-block;
 }
 
 .percent {
@@ -168,6 +224,10 @@ input {
   font-size: 1.1em;
 }
 
+#forms {
+  height: auto;
+}
+
 #surveys-taken li a {
   display: block;
 }
@@ -182,13 +242,16 @@ input {
   padding: 0;
 }
 
-#signin-box, #signup-box {
+#forms .form { 
+  opacity: 0;
   display: none;
-  margin: -2px auto;
   padding: 20px;
-  background-color: white;
+  margin-bottom: 20px;
   text-align: center;
-  box-shadow: inset 0 0 10px #333;
+}
+
+#forms .active {
+  display: block;
 }
 
 th {

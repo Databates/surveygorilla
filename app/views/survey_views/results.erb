@@ -1,7 +1,7 @@
 <section class="content innerwidth">
 <section class="survey">
 <div class="container">
-  <%if @error || @survey.user_surveys.count == 0 %>
+  <%if @error || @survey.questions.first.responses.count == 0 %>
     <h1>404!</h1>
     <h2>Survey does not exist or has no responses.</h2>
     <button type="button" class="button" onclick="window.location.href='/surveys'">Return to all surveys</button>

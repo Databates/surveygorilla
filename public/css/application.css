@@ -220,7 +220,7 @@ h1.home  {
   overflow: visible;
 }
 
-.button.close:focus {
+.close:focus {
   outline: none;
 }
 

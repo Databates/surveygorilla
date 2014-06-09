@@ -91,7 +91,7 @@ $(document).ready(function() {
     formViewController($('#guest-checkin'));
   })
 
-  $('.button.close').on('click', function(e) {
+  $('.close').on('click', function(e) {
     e.preventDefault();
     $('#forms').css('height','auto');
     closeForm($('#forms .active'));

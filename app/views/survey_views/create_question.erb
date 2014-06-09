@@ -1,9 +1,19 @@
-<div class="container">
-  <form id="submit-question-form" action='/survey/create/question' method="POST">
-    <label>Question Text: </label><input type="text" name="question[text]"><br>
-    <input type="submit" value="Add Choices" class="button">
-  </form>
-</div>
+<section class="content innerwidth">
+  <section class="survey">
+  <div class="container">
+    <form id      = "submit-question-form"
+          class   = "form" 
+          action  = "/survey/create/question"
+          method  = "POST">
+      <label for="question[text]">Question Text: </label>
+      <input type="text" class="w100" name="question[text]">
+      <div class="button-wrapper">
+        <input type="submit" value="Add Choices" class="button">
+      </div>
+    </form>
+  </div>
+  </section>
+</section>
 
 
 <script>

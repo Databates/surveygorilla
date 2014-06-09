@@ -1,3 +1,5 @@
+<section class="content innerwidth">
+<section class="survey">
 <h1><%= current_user.name %>'s Surveys</h1>
 <div class="container">
   <%if @surveys%>
@@ -10,5 +12,7 @@
     </div>
     <%end%>
   <%end%>
-  <a class="button" href="/surveys">Return to ALL surveys</a>
+  <button type="button" class="button" onclick="window.location.href='/surveys'">Return to all surveys</button>
 </div>
+</section>
+</section>

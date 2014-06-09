@@ -1,17 +1,35 @@
-<div class="container profile">
-  <h1><%= current_user.name %>'s Page</h1>
-  <ul>
-    <li><a class="button" href="/survey/new">Create a Survey!</a></li>
-    <li><a class="button" href="/surveys">Choose a Survey to Complete</a></li>
-    <li><a class="button" href="/user/edit/<%= current_user.id %>">Change your Password</a></li>
-  </ul>
+<section class="innerwidth">
+<section class="survey">
+<div class="profile">
+  <section>
+    <h1><%= current_user.name %>'s Page</h1>
+    <ul>
+      <li><a class="button" href="/survey/new">Create Survey</a></li>
+      <li><a class="button" href="/surveys">Take a Survey</a></li>
+      <li><a class="button" href="/user/edit/<%= current_user.id %>">Change your Password</a></li>
+    </ul>
+  </section>
+
+  <section>
   <h2>Surveys Taken</h2>
-  <ul id="surveys-taken">
+  <ul class="list">
     <% @user_surveys.each do |survey| %>
     <li><a href="/survey/<%=survey.id%>/results"><%= survey.title %></a></li>
     <% end %>
   </ul>
+  </section>
+
+  <section>
+    <h2>My Surveys</h2>
+    <ul class="list">
+      <% Survey.where(user: current_user).each do |survey| %>
+      <li><a href="/survey/<%=survey.id%>/results"><%= survey.title %></a></li>
+      <% end %>
+    </ul>
+  </section>
 </div>
+</section>
+</section>
 
 <script>
   $(document).ready(function(){

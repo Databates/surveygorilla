@@ -1,12 +1,18 @@
-<div class="container">
-  <form action='/survey/create' method="POST">
-    <label>Survey Title:</label><input type="text" name="survey[title]"><br>
-    <label>Survey Description:</label><input type="text" name="survey[description]"><br>
+<section class="content innerwidth">
+<section class="survey">
+  <div class="container">
+  <form action='/survey/create' class="form"  method="POST">
+    <label>Survey Title:</label><input type="text" class="w100" name="survey[title]"><br>
+    <label>Survey Description:</label><input type="text" class="w100" name="survey[description]"><br>
     <input type="hidden" name="survey[user_id]" value="<%=session[:user_id]%>">
-    <a href="/user/<%= current_user.id %>" class="button alert">cancel</a>
-    <input type="submit" value="submit" class="button">
+    <div class="button-wrapper">
+      <input type="submit" value="next" class="button">
+      <button type="button" class="button" onclick="window.location.href='/user/<%= current_user.id %>'">cancel</button>
+    </div>
   </form> 
 </div>
+</section>
+</section>
 
 <script>
   $(document).ready(function(){

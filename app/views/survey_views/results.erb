@@ -1,7 +1,10 @@
+<section class="content innerwidth">
+<section class="survey">
 <div class="container">
-  <%if @error %>
-    <h3>404!</h3>
-    <p> Survey does not exist!</p>
+  <%if @error || @survey.user_surveys.count == 0 %>
+    <h1>404!</h1>
+    <h2>Survey does not exist or has no responses.</h2>
+    <button type="button" class="button" onclick="window.location.href='/surveys'">Return to all surveys</button>
   <% else %>
  <p class="header">Survey results of:</p>
     <h1 class="title"><%=h @survey.title%></h1>
@@ -11,13 +14,19 @@
     <%@survey.questions.each_with_index do |question|%>
       <p class="question-text"><%=h question.text %></p>
       <% question.answer_choices.each do |choice| %>
-        <p class="answer-text">
-          <b>"<%=h choice.text %>"</b> <span class="small">selected <%=h choice.responses.count %> times</span>
-          <% if question.responses.exists? %>
-          <span class="percent"><%=h ((choice.responses.count.to_f / question.responses.count.to_f)*100).round %>%</span>
-          <% end %>
-        </p>
+        <% percent = ((choice.responses.count.to_f / question.responses.count.to_f)*100).round %>
+        <div class="answer-box">
+          <p class="answer-text">
+            <b>"<%=h choice.text %>"</b> <span class="small">selected <%=h choice.responses.count %> times</span>
+            <% if question.responses.exists? %>
+            <span class="percent"><%=h percent %>%</span>
+            <% end %>
+          </p>
+          <div class="bg-graph-bar" style="width:<%= percent %>%"></div>
+        </div>
       <% end %>
     <% end %>
   <%end%>
 </div>
+</section>
+</section>

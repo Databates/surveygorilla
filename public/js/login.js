@@ -24,11 +24,13 @@ $(document).ready(function() {
   }
 
   function showCloseButton() {
-    $('.button.close').css({display: 'block'}, 'fast');
+    $('.close').removeClass('hidden')
+               .css({display: 'block'}, 'fast');
   }
 
   function hideCloseButton() {
-    $('.button.close').fadeOut('fast');
+    $('.close').addClass('hidden')
+               .fadeOut('fast');
   }
 
   function revealForm(form) {

@@ -2,7 +2,6 @@
 
 get '/surveys' do
 @surveys = Survey.all
-# take them to display @ views/survey_views/display_survey.erb
 erb :"survey_views/display_survey"
 end
 
@@ -29,41 +28,32 @@ end
 post '/survey/create/question' do
   puts "LOG #{params.inspect}"
   @survey = Survey.find(session[:current_survey])
-  # puts "LOG #{@survey}"
   @survey.questions << Question.new(params[:question])
   @question = Question.last
-  # puts "LOG #{@question}"
   erb :"survey_views/create_option"
-  #turned back on for testing. 11am Sunday 3/23/14s
-  # redirect '/survey/create/option'
 end
 
 
 #--------- Create AnswerChoices (Options) Routes ---------------------
 
 get 'survey/create/answer_choices' do
-  # if session[:user_id] == nil
-  #   redirect '/'
-  # end
   @question = Question.last
   erb :"survey_views/create_option"
 end
-
 
 post '/survey/create/answer_choices' do
   @question = Question.last
   params.each_pair do |name, answer|
     @question.answer_choices << AnswerChoice.new(text: answer)
   end
-  puts "[LOG THIS SHIT] #{params.inspect}"
-  redirect '/surveys' #send them back to the landing page with ALL surveys
+  redirect '/surveys'
 end
 
 #----------Display an individual Survey to the User ------------------
 
 get '/survey/:survey_id/individual' do
   @survey = Survey.find_by_id(params[:survey_id])
-  @questions = @survey.questions # array
+  @questions = @survey.questions
 
   erb :"survey_views/display_one"
 end
@@ -86,14 +76,14 @@ post '/survey/take' do
       answer_choice: AnswerChoice.find(value.to_i)
     );
   end
-  redirect to '/confirmation'
+  redirect to "/survey/#{@survey.id}/results"
 end
 
 get '/confirmation' do
   erb :"survey_views/completed_survey"
 end
 
-#--View a list of YOUR Surveys (not the global list on landing page)---
+#--------------View a list of YOUR Surveys ---------------------------
 
 get '/view_your_surveys' do
   @surveys = User.find(session[:user_id]).surveys

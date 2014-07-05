@@ -17,6 +17,7 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'sass'
 
 require 'erb'
 require 'sinatra/flash'
@@ -35,3 +36,7 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 require 'bcrypt'
+
+get '/css/application.css' do 
+  scss :'sass/application'
+end

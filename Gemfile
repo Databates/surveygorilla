@@ -26,4 +26,6 @@ group :test do
   gem 'faker'
 end
 
-  gem 'rspec'
+gem 'rspec'
+
+gem 'sass'

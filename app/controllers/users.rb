@@ -10,6 +10,7 @@ post '/user/signin' do
     @errors = {:Invalid=>["Incorrect Login"]}
     redirect to('/')
   end
+  @message = "test"
 end
 
 get '/user/signin' do

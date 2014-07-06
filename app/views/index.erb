@@ -1,5 +1,5 @@
 <div class="header-box">
-  <h1 class="home innerwidth">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
+  <h1 class="home inner-width">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
 </div>
 <div id="forms">
     <%= erb :"user_views/_signin_form" %>
@@ -9,12 +9,17 @@
 <div class="close-button-wrapper">
   <button class="close hidden" type="button">x</button>
 </div>
-<div id="heroshot">
-  <% @surveys.each do |survey| %>
-  <ul>
-    <li><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
-  </ul>
-  <% end %>
-</div>
+<section id="content" class="inner-width">
+  <div class="fourth left"></div>
+  <div class="two-fourth">
+    <h2>ON TAP</h2>
+    <% @surveys.each do |survey| %>
+    <ul>
+      <li class="item"><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
+    </ul>
+    <% end %>
+  </div>
+  <div class="fourth right"></div>
+</section>
 
 

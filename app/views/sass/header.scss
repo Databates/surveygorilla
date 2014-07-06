@@ -1,0 +1,65 @@
+nav {
+  height: 42px;
+  .right {
+    font-size: 1.25em;
+    font-weight: 300;
+  }
+}
+
+.home nav {
+  height: 44px;
+}
+
+.nav-wrapper {
+  background-color: #8A2E5C;
+}
+
+.home.nav-wrapper {
+  background-color: white;
+}
+
+
+#logo, #usernav li {
+  height: 40px;
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+#usernav {
+  line-height: 40px;
+  height: inherit;
+  li {
+    &:hover, &:hover a, & a:hover {
+      background-color: white;
+      color: #8A2E5C;
+    }
+    display: inline-block;
+    padding: 0 10px;
+    a {
+      color: white;
+    }
+  }
+}
+
+#logo h1, #logo h1 a {
+  color: white;
+  }
+
+#logo h1 {
+  font-size: 3em;
+  line-height: 52px;
+  margin: 0;
+}
+
+#logo span {
+  position: relative;
+  top: -22px;
+  right: -4px;
+}
+
+.header-box {
+  background-color: $blue;
+  padding: 40px 0;
+  width: 100%;
+  overflow: hidden;
+}

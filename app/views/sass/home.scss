@@ -1,0 +1,36 @@
+@import 'color';
+
+.home {
+  #usernav {
+    li {
+      &:hover, &:hover a, & a:hover {
+          background-color: #8A2E5C;
+          color: white;
+      }
+      a {
+        color: $grey;
+      }
+    }
+    #guest {
+      a {
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.home #logo h1, .home #logo h1 a {
+  color: #8A2E5C;
+  }
+
+
+h1.home  {
+  color: white;
+  background-color: transparent;
+  font-family: "tablet-gothic";
+  font-weight: 200;
+  font-size: 2em;
+  margin: auto;
+  text-align: center;
+}

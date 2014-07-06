@@ -1,12 +1,21 @@
-/* colors */
-$blue: #52527A;
-$purple: #7C2953;
-$grey: #333;
+@import 'home';
+@import 'header';
 
+@mixin fleft {
+  float: left;
+}
 
 * {
   padding: 0;
   margin: 0;
+}
+
+h2 {
+  margin: 0 0 $margin/2;
+  padding-bottom: $padding / 2;
+
+  line-height: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 1); 
 }
 
 a {
@@ -22,137 +31,68 @@ body {
   font-family: "tablet-gothic-semi-condensed";
 }
 
+#content {
+  margin: $margin auto;
+}
+
 section {
   margin: 50px auto;
 }
 
-.innerwidth {
-  width: 960px;
+.inner-width {
+  width: $width;
   margin: auto;
 }
 
-nav {
-  height: 42px;
+.left-third, .right-third, .two-third,
+.fourth, .two-fourth, .three-fourth {
+  @include fleft;
+  /*background: #eee;*/
+  padding: $padding;
 }
 
-.home nav {
-  height: 44px;
+.left-third, .right-third {
+  width: $third;
 }
 
-.nav-wrapper {
-  background-color: #8A2E5C;
+.two-third {
+  width: $twothird;
 }
 
-.home.nav-wrapper {
-  background-color: white;
+.fourth {
+  width: $fourth - $margin - ($padding * 2);
 }
 
-nav .right {
-  font-size: 1.25em;
-  font-weight: 300;
+.two-fourth {
+  width: $twofourth - ($padding * 2);
+}
+
+.three-fourth {
+  width: $threefourth - $margin - ($padding * 2);
 }
 
 .left {
-  float: left;
+  margin-right: $margin;
 }
 
 .right {
-  float: right;
+  margin-left: $margin;
 }
 
-#logo, #usernav li {
-  height: 40px;
-  margin-top: 2px;
-  overflow: hidden;
-}
+/* ITEMS */
 
-#usernav {
-  line-height: 40px;
-  height: inherit;
-}
-
-#usernav li {
-  display: inline-block;
-  padding: 0 10px;
-}
-
-#usernav li a {
-  color: white;
-}
-
-.home #usernav li a {
-  color: $grey;
-}
-
-.home #usernav #guest a {
-  color: white;
-  background-color: transparent;
-}
-
-.home #usernav li:hover,
-.home #usernav li:hover a,
-.home #usernav li a:hover {
-  background-color: #8A2E5C;
-  color: white;
-}
-
-#usernav li:hover,
-#usernav li:hover a,
-#usernav li a:hover {
-  background-color: white;
-  color: #8A2E5C;
-}
-
-.dropdown-item {
-  background-color: $grey;
-}
-
-#logo h1, #logo h1 a {
-  color: white;
+.item {
+  background: $blue;
+  margin: 0 0 $margin/2;
+  padding: $padding/2;
+  border-radius: 2px;
+  &, & a {
+    color: white;
   }
-
-.home #logo h1, .home #logo h1 a {
-  color: #8A2E5C;
-  }
-
-#logo h1 {
-  font-size: 3em;
-  line-height: 52px;
-  margin: 0;
 }
 
-#logo span {
-  position: relative;
-  top: -22px;
-  right: -4px;
-}
 
-.header-box {
-  background-color: $blue;
-  padding: 40px 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-h1.home  {
-  color: white;
-  background-color: transparent;
-  font-family: "tablet-gothic";
-  font-weight: 200;
-  font-size: 2em;
-  margin: auto;
-  text-align: center;
-}
-
-#heroshot {
-  width: 100%;
-  height: 80%;
-  background-color: rgba(complement($blue), 0.25);
-  /*background-image: url(../img/gorillaz-5.jpg);*/
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 0 -100px;
-}
+/* end ITEMS */
 
 .small {
   font-size: .75em;

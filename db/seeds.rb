@@ -1,63 +1,90 @@
-ian = User.create(email: "ian@yahoo.com",name: "Ian" , password: "1234", password_confirmation: "1234")
-pablo = User.create(email: "pablo@yahoo.com", name: "Pablo V", password: "1234", password_confirmation: "1234")
-cameron = User.create(email: "cam@yahoo.com", name: "Cam J", password: "1234", password_confirmation: "1234")
-marco = User.create(email: "marco.bbcm@gmail.com", name: "Marco M", password: "1derfly", password_confirmation: "1derfly")
-dan = User.create(email: "dan@yahoo.com", name: "Dan B", password: "1234", password_confirmation: "1234")
+# # Users
+100.times do
+  email = Faker::Internet.email
+  name = Faker::Name.name
+  password = Faker::Internet.password(8, 16)
+  user_info = {email: email, name: name, password: password, password_confirmation: password}
+  User.create(user_info)
+end
 
-# New survey, created by user 'a'
-pizza_survey = Survey.create(title: "Pizza Poll", description: "Tell us about your favorite pizza and represent your home town", user_id: ian.id)
+marco_info = {email: "marco.bbcm@gmail.com", name: "Marco Morales", password: "1derfly", password_confirmation: "1derfly"}
+marco = User.create(marco_info)
 
-# Question #1
-fav_style = Question.create(text: "What's your favorite style of pizza?")
-fav_style1 = AnswerChoice.create(text:"Thin-Crust")
-fav_style2 = AnswerChoice.create(text:"Deep-Dish")
-fav_style3 = AnswerChoice.create(text:"Stuffed")
-fav_style4 = AnswerChoice.create(text:"Pan")
-fav_style.answer_choices << fav_style1
-fav_style.answer_choices << fav_style2
-fav_style.answer_choices << fav_style3
-fav_style.answer_choices << fav_style4
+# Surveys
+(1..100).to_a.each do |num|
+  title = Faker::Lorem.words(rand(3..7))
+  desc = Faker::Lorem.paragraph(rand(1..3))
+  user = num % 12 == 0 ? marco : User.all.sample
+  Survey.create(title: title.join(" "), description: desc, creator: user)
+end
 
-# Question #2
-best_city = Question.create(text: "What city has the best Pizza?" )
-best_city1 = AnswerChoice.create(text:"New York")
-best_city2 = AnswerChoice.create(text:"Chicago")
-best_city3 = AnswerChoice.create(text:"LA")
-best_city4 = AnswerChoice.create(text:"Napels")
-best_city.answer_choices << best_city1
-best_city.answer_choices << best_city2
-best_city.answer_choices << best_city3
-best_city.answer_choices << best_city4
+# Questions
+surveys = Survey.all
+surveys.each do |survey|
+  q_count = rand(1..12)
+  q_count.times do
+    question = Faker::Lorem.sentence.sub(".", "?")
+    survey.questions << Question.create(text: question)
+  end
+end
 
-# Add questions to survey
-pizza_survey.questions << fav_style
-pizza_survey.questions << best_city
+# Choices
 
-fav_style_response1 = Response.create(question: fav_style, user: ian, answer_choice: fav_style1)
-fav_style_response2 = Response.create(question: fav_style, user: marco, answer_choice: fav_style1)
-fav_style_response3 = Response.create(question: fav_style, user: cameron, answer_choice: fav_style2)
-fav_style_response4 = Response.create(question: fav_style, user: pablo, answer_choice: fav_style2)
-fav_style_response5 = Response.create(question: fav_style, user: dan, answer_choice: fav_style4)
+def catch_phrase
+  Faker::Company.catch_phrase
+end
 
-best_city_response1 = Response.create(question: best_city, user: ian, answer_choice: best_city1)
-best_city_response2 = Response.create(question: best_city, user: marco, answer_choice: best_city1)
-best_city_response3 = Response.create(question: best_city, user: cameron, answer_choice: best_city2)
-best_city_response4 = Response.create(question: best_city, user: pablo, answer_choice: best_city3)
-best_city_response5 = Response.create(question: best_city, user: dan, answer_choice: best_city4)
+def product_name
+  Faker::Commerce.product_name 
+end
 
-taken_survey = UserSurvey.create(user:cameron, survey: pizza_survey)
+def bs
+  Faker::Company.bs
+end
 
-# User table test
-puts ian.email == "ian@yahoo.com" # true
+def few_words
+  Faker::Lorem.words(rand(2..6)).join(" ")
+end
 
-# User/Survey Associations test
-ian.surveys.count == 1
+def generate_choice
+  [catch_phrase, product_name, bs, few_words].sample
+end
 
-# Survey/Question Associations test
-pizza_survey.questions.count == 2
+def choices_text(question)
+  question.answer_choices.map(&:text)
+end
 
-# Question/AnswerChoice Associations test
-fav_style.answer_choices.count == 4
+def choices_full?(question, count)
+  question.answer_choices.count == count
+end
 
-# AnswerChoice/Response
-fav_style1.responses.count == 2
+def add_choice(question, choice)
+  question.answer_choices << AnswerChoice.create(text: choice)
+end
+
+surveys.each do |survey|
+  questions = survey.questions
+  questions.each do |question|
+    choice_count = rand(2..6)
+    until choices_full?(question, choice_count) do
+      choice = generate_choice
+      unless choices_text(question).include?(choice)
+        add_choice(question, choice)
+      end
+    end
+  end
+end
+
+# Responses
+surveys.each do |survey|
+  questions = survey.questions
+  users = User.all
+  takers = users.sample(rand(1..users.count))
+  takers.each do |taker|
+    questions.each do |question|
+      choice = question.answer_choices.sample
+      Response.create(question: question, user: taker, answer_choice: choice)
+    end
+    survey.completions << Completion.create(taker: taker, survey: survey)
+  end
+end

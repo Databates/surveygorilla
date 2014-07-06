@@ -20,6 +20,7 @@ require "sinatra/reloader" if development?
 require 'sass'
 
 require 'erb'
+require 'sinatra/static_assets'
 require 'sinatra/flash'
 
 enable :sessions

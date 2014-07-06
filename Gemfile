@@ -29,3 +29,4 @@ end
 gem 'rspec'
 
 gem 'sass'
+gem 'sinatra-static-assets'

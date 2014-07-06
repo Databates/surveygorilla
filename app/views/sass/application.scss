@@ -73,10 +73,12 @@ section {
 
 .left {
   margin-right: $margin;
+  float: left;
 }
 
 .right {
   margin-left: $margin;
+  float: right;
 }
 
 /* ITEMS */

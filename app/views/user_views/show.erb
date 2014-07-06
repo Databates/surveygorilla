@@ -12,20 +12,19 @@
 
   <section>
   <h2>Surveys Taken</h2>
-  <ul class="list">
-    <% @user_surveys.each do |survey| %>
-    <li><a href="/survey/<%=survey.id%>/results"><%= survey.title %></a></li>
-    <% end %>
-  </ul>
   </section>
-
-  <section>
-    <h2>My Surveys</h2>
     <ul class="list">
-      <% Survey.where(user: current_user).each do |survey| %>
+      <% @user_taken_surveys.each do |survey| %>
       <li><a href="/survey/<%=survey.id%>/results"><%= survey.title %></a></li>
       <% end %>
     </ul>
+  <section>
+    <h2>My Surveys</h2>
+      <ul class="list">
+        <% @user_my_surveys.each do |survey| %>
+        <li><a href="/survey/<%=survey.id%>/results"><%= survey.title %></a></li>
+        <% end %>
+      </ul>
   </section>
 </div>
 </section>

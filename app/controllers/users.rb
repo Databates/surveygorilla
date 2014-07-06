@@ -46,7 +46,8 @@ end
 # user homepage
 get '/user/:id' do
   @user = User.find(session[:user_id])
-  @user_surveys = Survey.all.where(user_id: session[:user_id])
+  @user_my_surveys = @user.surveys
+  @user_taken_surveys = @user.taken_surveys
   redirect to("/") if @user.id != params[:id].to_i
   erb :"user_views/show"
 end

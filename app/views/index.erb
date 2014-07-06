@@ -10,7 +10,15 @@
   <button class="close hidden" type="button">x</button>
 </div>
 <section id="content" class="inner-width">
-  <div class="fourth left"></div>
+  <div class="fourth left">
+    <ul>
+    <% top_creators.each_pair do |creator, count| %>
+      <li class="item">
+        <a href="/<%= creator.id %>/surveys"><%= creator.name %></a> >> <%= count %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
   <div class="two-fourth">
     <h2>ON TAP</h2>
     <% @surveys.each do |survey| %>

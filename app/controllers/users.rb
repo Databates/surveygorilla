@@ -41,7 +41,7 @@ post '/user/new' do
   end
 end
 
-# READ routes ---------------------------------------------------
+# READ routes
 
 # user homepage
 get '/user/:id' do

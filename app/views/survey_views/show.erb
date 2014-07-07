@@ -3,7 +3,7 @@
 <form id="take-survey" class="survey" action="/survey/take" method="post">
   <input type="hidden" value="<%= @survey.id %>" name="survey_id"/>
   <h1 class="title"><%=h @survey.title%>
-    <span class="small"> by <%= @survey.user.name%></span>
+    <span class="small"> by <%= @survey.creator.name%></span>
   </h1>
   <h3 class="description"><%=h @survey.description%></h3>
   <% @survey.questions.each do |question| %>

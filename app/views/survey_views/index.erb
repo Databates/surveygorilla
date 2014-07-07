@@ -8,10 +8,10 @@
       <a href="/survey/<%=survey.id%>"><%=survey.title%></a>
       <span class="author"> by <%=survey.creator.name%></span>
     </p>
-    <p>
-      <span class="link"><a href="/survey/<%=survey.id%>">Take this survey</a></span>
-      <span class="link"><a href="/survey/<%=survey.id%>/results">View Results</a></span>
-    </p>
+    <ul>
+      <li><a class="link" href="/survey/<%=survey.id%>">Take Survey</a></li>
+      <li><a class="link" href="/survey/<%=survey.id%>/responses">View Responses</a></li>
+    </ul>
   </div>
   <%end%>
 </div>

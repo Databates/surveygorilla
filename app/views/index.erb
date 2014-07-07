@@ -1,6 +1,8 @@
-<div class="header-box">
-  <h1 class="home inner-width">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
-</div>
+<% if !current_user %>
+  <div class="header-box">
+    <h1 class="home inner-width">&ldquo;Surveyz forever, surveyz free, surveyz forever you and me&rdquo;</h1>
+  </div>
+<% end %>
 <div id="forms">
     <%= erb :"user_views/_signin_form" %>
     <%= erb :"user_views/_signup_form" %>
@@ -11,19 +13,24 @@
 </div>
 <section id="content" class="inner-width">
   <div class="fourth left">
+    <h2>Top Creators</h2>
     <ul>
     <% top_creators.each_pair do |creator, count| %>
       <li class="item">
-        <a href="/<%= creator.id %>/surveys"><%= creator.name %></a> >> <%= count %>
+        <a href="/user/<%= creator.id %>/surveys"><%= creator.name %></a>
+        <span class="highlight"><%= count %></span>
       </li>
     <% end %>
     </ul>
   </div>
   <div class="two-fourth">
-    <h2>ON TAP</h2>
-    <% @surveys.each do |survey| %>
+    <h2>Top Surveys</h2>
+    <% top_surveys.each_pair do |survey, count| %>
     <ul>
-      <li class="item"><a href="/survey/<%= survey.id %>"><%= survey.title %></a></li>
+      <li class="item">
+        <a href="/survey/<%= survey.id %>"><%= survey.title %></a>
+        <span class="highlight"><%= count %></span>
+      </li>
     </ul>
     <% end %>
   </div>

@@ -214,6 +214,19 @@ input[type="text"],
   display: inline-block;
 }
 
+.highlight {
+  background-color: #fdb813;
+  padding: 5px;
+  height: 1em;
+  min-width: 1em;
+  line-height: 1em;
+  text-align: center;
+  float: right;
+  display: inline-block;
+  border-radius: 2px;
+  color: $blue;  
+}
+
 .percent {
   float: right;
   font-weight: 700;
@@ -311,11 +324,9 @@ th {
   padding: 10px;
   background-color: #eee;
   border-radius: 5px;
-}
-
-#surveys-display p {
-  font-size: 1.25em;
-  margin: 0;
+  & li {
+    display: inline-block;
+  }
 }
 
 #surveys-display .link {
@@ -323,15 +334,14 @@ th {
   font-size: .75em;
   margin-left: 5px;
   border-radius: 2px;
-  background-color: lightblue;
-}
-
-#surveys-display .link a {
-  color: $grey;
-}
-
-#surveys-display .link a:hover {
-  color: #111;
+  background-color: $blue;
+  display: inline-block;
+  color: #eee;
+  font-size: .9em;
+  &:hover {
+    color: white;
+    background-color: darken($blue, 10)
+  }
 }
 
 .profile li {

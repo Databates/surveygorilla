@@ -1,5 +1,13 @@
-@import 'home';
-@import 'header';
+/* helpers */
+@import 'helpers/variables';
+
+/* layout */
+@import 'layout/header';
+
+/* pages */
+@import 'pages/home';
+
+/* components */
 
 @mixin fleft {
   float: left;

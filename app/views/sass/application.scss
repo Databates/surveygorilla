@@ -5,22 +5,13 @@
   float: left;
 }
 
+@function expand($grid, $columns) {
+  @return $grid * $columns;
+}
+
 * {
   padding: 0;
   margin: 0;
-}
-
-h2 {
-  margin: 0 0 $margin/2;
-  padding-bottom: $padding / 2;
-
-  line-height: 1em;
-  border-bottom: 1px solid rgba(255, 255, 255, 1); 
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
 }
 
 body {
@@ -28,8 +19,23 @@ body {
   color: $grey;
   margin: 0 auto;
   background-repeat: no-repeat;
-  font-family: "tablet-gothic-semi-condensed";
+  font-family: "iskra",sans-serif;
+  font-weight: 500;
 }
+
+h2 {
+  margin: 0 0 $margin/2;
+  padding-bottom: $padding / 2;
+  line-height: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 1); 
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 #content {
   margin: $margin auto;
@@ -44,11 +50,15 @@ section {
   margin: auto;
 }
 
-.left-third, .right-third, .two-third,
-.fourth, .two-fourth, .three-fourth {
-  @include fleft;
-  /*background: #eee;*/
-  padding: $padding;
+.column {
+  display: inline-block;
+  margin-right: $margin;
+  .grid-4 & {
+    width: $fourth - $margin;
+  }
+  &:last {
+    margin-right: 0;
+  }
 }
 
 .left-third, .right-third {
@@ -59,8 +69,12 @@ section {
   width: $twothird;
 }
 
-.fourth {
-  width: $fourth - $margin - ($padding * 2);
+.grid-4 {
+  .column {
+    &.span-2 {
+      width: expand($fourth - $margin, 2);
+    }
+  }
 }
 
 .two-fourth {

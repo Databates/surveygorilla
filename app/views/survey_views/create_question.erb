@@ -1,10 +1,16 @@
+<h3>Title:</h3>
+<p><%= @survey.title %></p>
+<h3>Description:</h3>
+<p><%= @survey.description %></p>
+<h3>Questions Count:</h3>
+<p><%= @survey.questions.count %></p>
 <section class="content innerwidth">
   <section class="survey">
   <div class="container">
-    <form id      = "submit-question-form"
-          class   = "form" 
-          action  = "/survey/create/question"
-          method  = "POST">
+    <form id = "new-question" class = "form" 
+          action = "/survey/new/question"
+          method = "POST">
+      <input name="survey" type="hidden" value="<%= @survey.id %>" %>
       <label for="question[text]">Question Text: </label>
       <input type="text" class="w100" name="question[text]">
       <div class="button-wrapper">
@@ -14,11 +20,3 @@
   </div>
   </section>
 </section>
-
-
-<script>
-  $(document).ready(function(){
-    $('body').css('background-image', 'url(/img/1155959-gorillaz.jpg)');
-    $('body').css('background-position', '50% 100%');
-  })
-</script>

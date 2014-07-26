@@ -1,45 +1,24 @@
+<h3>Title:</h3>
+<p><%= @survey.title %></p>
+<h3>Description:</h3>
+<p><%= @survey.description %></p>
+<% question = @questions.last %>
 <section class="content innerwidth">
-<section class="survey">
-<h1><span class="small">Question:</span><br><%= @question.text %></h1>
-<form id="submit-option-form" class="form" action='/survey/create/answer_choices' method="POST">
-  <label>Please Add Options to your Survey</label>
-  <div id="inputs">
-    <input class="option-field w100" type="text" name="answer1">
-  </div>
-  <div class="button-wrapper">
-    <button class="add-option button" type="button">Add another Option</button>
-    <button class="remove-last-option button" type="button">Remove your last Option</button>
-    <button id="submit-option-button" class="button" type="submit">Submit Options</button>
-  </div>
-</form>
+  <section class="survey">
+  <h3>Question:</h3>
+  <p><%= question.text %></p>
+  <form id="submit-option-form" class="form" action='/survey/create/answer_choices' method="POST">
+    <label>Please Add Options to your Survey</label>
+    <div id="inputs">
+      <input class="option-field w100" type="text" name="answer1">
+    </div>
+    <div class="button-wrapper">
+      <button class="add-option button" type="button">Add another Option</button>
+      <button class="remove-last-option button" type="button">Remove your last Option</button>
+      <button id="submit-option-button" class="button" type="submit">Submit Options</button>
+    </div>
+  </form>
 
-<div id="empty-warning" style="color:red;">
-  </div>
-
-<script>
-  $(document).ready(function(){
-    $('.add-option').on('click', function(event) {
-      event.preventDefault();
-      var i = $("#inputs .option-field").length + 1;
-      var holder = $("<input class='option-field w100' type='text' name" + "='answer" + i +"'>");
-      holder.addClass("removable");
-      holder.appendTo("#inputs");
-    });
-
-    $('.remove-last-option').on('click', function(event) {
-      event.preventDefault();
-      $(".removable:last").remove();
-    });
-
-    $('#submit-option-button').on("click", function(event) {
-      var answerChoice = $('#submit-option-form .option-field').val();
-      if (answerChoice == "") {
-        event.preventDefault();
-        $('#empty-warning').text("The Option field cannot be blank.").show().fadeOut( 2500 );
-    }
-    });
-  });
-
-</script>
-</section>
+  <div id="empty-warning" style="color:red;"></div>
+  </section>
 </section>

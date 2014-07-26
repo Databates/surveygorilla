@@ -1,33 +1,25 @@
 <% if current_user? %>
   <div class="nav-wrapper">
-    <nav class="top-bar inner-width" data-topbar>
-  <% else %>
+<% else %>
   <div class="nav-wrapper home">
+<% end %>
     <nav class="top-bar inner-width" data-topbar>
-  <% end %>
-    <ul id="logo" class="left">
-      <li class="name">
-        <h1><a href="/"><span>survey</span>Gorillaz</a></h1>
-      </li>
-    </ul>
-    <ul id="usernav" class="right">
-      <% if current_user? %>
-        <li><a class="add" href="/survey/new">Create Survey</a></li>
-        <li><a class="add" href="/surveys">All Surveys</a></li>
-        <li><a class="add" href="/user/<%= current_user.id %>/surveys">My Surveys</a></li>
-        <li><a href="/user/signout">Sign Out</a></li>
-        <li class="dropdown">
-          <a href="/user/<%= current_user.id %>"><%= current_user.email %></a>
-          <ul class="dropdown-item">
-            <li><a href="/user/<%= current_user.id %>">Profile Page</a></li>
-            <li><a href="/user/edit/<%= current_user.id %>">Edit</a></li>
-          </ul>
+      <ul id="logo" class="left">
+        <li class="name">
+          <h1><a href="/"><span>survey</span>Gorillaz</a></h1>
         </li>
-      <% else %>
-        <li><a id="nav-signin">Sign In</a></li>
-        <li><a id="nav-signup">Sign Up</a></li>
-        <li id="guest"><a>Guest Check-In</a></li>
-      <% end %>
-    </ul>
-  </nav>
-</div>
+      </ul>
+      <ul id="usernav" class="right">
+        <% if current_user? %>
+          <li><a class="add" href="/survey/new">Create Survey</a></li>
+          <li><a class="add" href="/surveys">All Surveys</a></li>
+          <li><a class="add" href="/user/<%= current_user.id %>/surveys">My Surveys</a></li>
+          <li><a href="/user/signout">Sign Out</a></li>
+        <% else %>
+          <li><a id="nav-signin">Sign In</a></li>
+          <li><a id="nav-signup">Sign Up</a></li>
+          <li id="guest"><a>Guest Check-In</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>

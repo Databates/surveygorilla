@@ -1,5 +1,6 @@
 /* helpers */
 @import 'helpers/variables';
+@import 'helpers/helpers';
 
 /* layout */
 @import 'layout/header';
@@ -27,7 +28,7 @@ body {
   color: $grey;
   margin: 0 auto;
   background-repeat: no-repeat;
-  font-family: "iskra",sans-serif;
+  font-family: "tablet-gothic";
   font-weight: 500;
 }
 
@@ -47,6 +48,11 @@ a {
 
 #content {
   margin: $margin auto;
+}
+
+.surveys .truncate {
+  width: 90%;
+  display: inline-block;
 }
 
 section {

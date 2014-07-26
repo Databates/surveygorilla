@@ -21,10 +21,12 @@
   <div class="column span-2">
     <h2>On Tap</h2>
     <% top_surveys.each_pair do |survey, count| %>
-    <ul>
+    <ul class="surveys">
       <li class="item">
-        <a href="/survey/<%= survey.id %>"><%= survey.title %></a>
-        <span class="highlight"><%= count %></span>
+        <p>
+          <a class="truncate" href="/survey/<%= survey.id %>"><%= survey.title %></a>
+          <span class="highlight"><%= count %></span>
+        </p>
       </li>
     </ul>
     <% end %>

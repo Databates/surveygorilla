@@ -6,14 +6,13 @@ end
 
 # new
 get '/survey/new' do
-  erb :"survey_views/create_survey"
+  erb :"survey_views/new"
 end
 
 # create
 post '/survey/create' do
-  survey = Survey.create(params[:survey])
-  session[:current_survey] = survey.id
-  redirect '/survey/create/question'
+  @survey = Survey.create!(params[:survey])
+  erb :"/survey_views/create_question", layout: false
 end
 
 # show
